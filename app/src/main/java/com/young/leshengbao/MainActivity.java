@@ -50,7 +50,6 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
             iv_header = (CircleImageView) headView.findViewById(R.id.iv_user_header);
             tv_name = (TextView) headView.findViewById(R.id.tv_name);
 
-
             ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
             if (viewPager != null) {
                 setupViewPager(viewPager);

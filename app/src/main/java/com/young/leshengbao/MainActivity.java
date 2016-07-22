@@ -21,7 +21,7 @@ import com.young.leshengbao.utils.ToastUtil;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class  MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private DrawerLayout mDrawerLayout;
     private NavigationView navigationView;

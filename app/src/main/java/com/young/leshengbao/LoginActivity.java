@@ -9,12 +9,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.young.leshengbao.service.WebServiceOpforBt;
 import com.young.leshengbao.utils.LogUtil;
 import com.young.leshengbao.utils.ToastUtil;
 import com.young.leshengbao.view.stereo.CustomEdittext;
 import com.young.leshengbao.view.stereo.CustomTextView;
 import com.young.leshengbao.view.stereo.RippleView;
 import com.young.leshengbao.view.stereo.StereoView;
+
+import org.ksoap2.serialization.SoapObject;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
@@ -143,5 +150,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void loginTest(){
+        WebServiceOpforBt webServiceOpforBt = new WebServiceOpforBt();
+        Map map = new HashMap<>();
+        map.put("loginName","admin");
+        map.put("Pwd","123");
+        SoapObject soapObject = null ;
+        try {
+            soapObject = webServiceOpforBt.LoadResult(this.getString(R.string.name_space) ,this.getString(R.string.url_address),this.getString(R.string.login_method),map);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

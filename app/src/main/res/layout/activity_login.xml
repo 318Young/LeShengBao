@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_blue_deep"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_scrollFlags="scroll|enterAlways|snap" />
+
+
+
+    <com.young.leshengbao.view.stereo.StereoView
+        android:id="@+id/stereoView"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/icon_password"/>
+
+            <com.young.leshengbao.view.stereo.CustomEdittext
+                android:id="@+id/et_password"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColorHint="@color/font_gray"/>
+
+            <com.young.leshengbao.view.stereo.RippleView
+                android:id="@+id/rv_password"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingLeft="10dp"
+                app:normal="@drawable/icon_next_gray"
+                app:pressed="@drawable/icon_next"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/icon_user"/>
+
+            <com.young.leshengbao.view.stereo.CustomEdittext
+                android:id="@+id/et_username"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:background="@null"
+                android:hint="UserName"
+                android:textColorHint="@color/font_gray"
+                android:textSize="18sp"/>
+
+            <com.young.leshengbao.view.stereo.RippleView
+                android:id="@+id/rv_username"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingLeft="10dp"
+                app:normal="@drawable/icon_next_gray"
+                app:pressed="@drawable/icon_next"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/icon_love"/>
+
+            <com.young.leshengbao.view.stereo.CustomTextView
+                android:id="@+id/tv_welcome"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:singleLine="true"
+                android:gravity="center"
+                android:hint="人点击登录成功"
+                android:textColorHint="@color/font_gray"
+                android:textSize="18sp"/>
+
+            <com.young.leshengbao.view.stereo.RippleView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingLeft="10dp"
+                app:normal="@drawable/icon_love"/>
+        </LinearLayout>
+
+    </com.young.leshengbao.view.stereo.StereoView>
+
+</LinearLayout>

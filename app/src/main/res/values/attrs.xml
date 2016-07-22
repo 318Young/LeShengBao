@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RoundImageView">
+        <attr name="roundImageView_hasRound" format="boolean" />
+        <attr name="roundImageView_roundColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="FlipViewPager">
+        <!-- TODO -->
+    </declare-styleable>
+</resources>

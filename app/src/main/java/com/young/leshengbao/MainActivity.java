@@ -28,6 +28,7 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
     private View headView;
     private CircleImageView iv_header;
     private TextView tv_name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

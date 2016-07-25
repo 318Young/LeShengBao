@@ -23,7 +23,7 @@ public class WebServiceOpforBt {
     public SoapObject LoadResult(String NameSpace, String Url, String methodname, Map<String, Object> paramMap) throws IOException {
 
         SoapObject soapObject = new SoapObject(NameSpace, methodname);
-        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER12);
         HttpTransportSE trans = new HttpTransportSE(Url, 6000);
         if (paramMap != null) {
             Iterator<Entry<String, Object>> iter = paramMap.entrySet().iterator();
@@ -41,9 +41,9 @@ public class WebServiceOpforBt {
         try {
             trans.call(NameSpace + "." + methodname, envelope);
             System.out.println(trans.requestDump);
-            result = (SoapObject) envelope.bodyIn;
-
-        } catch (XmlPullParserException e) {
+//            result = (SoapObject) envelope.bodyIn;
+            result =  (SoapObject)envelope.getResponse();
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

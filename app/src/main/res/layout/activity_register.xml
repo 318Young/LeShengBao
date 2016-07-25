@@ -50,6 +50,42 @@
             android:layout_height="1dp"
             android:background="@color/bg_gray" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_get_yzm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableLeft="@drawable/icon_psw"
+                android:drawablePadding="4dp"
+                android:hint="@string/et_hint_yzm"
+                android:inputType="textPassword"
+                android:padding="4dp"
+                android:singleLine="true"
+                android:textColorHint="@color/bg_gray"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/bt_get_yzm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bt_get_yzm" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_gray" />
+
         <EditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
@@ -59,34 +95,43 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:background="@null"
-            android:drawableLeft="@drawable/icon_psw"
+            android:drawableLeft="@drawable/icon_user"
             android:drawablePadding="4dp"
-            android:hint="@string/et_hint_username"
-            android:inputType="textPassword"
+            android:hint="@string/et_hint_pdw"
             android:padding="4dp"
             android:singleLine="true"
             android:textColorHint="@color/bg_gray"
             android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_gray" />
+
+        <EditText
+            android:id="@+id/et_confirm_yzm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/icon_user"
+            android:drawablePadding="4dp"
+            android:hint="@string/et_hint_confirm_pdw"
+            android:padding="4dp"
+            android:singleLine="true"
+            android:textColorHint="@color/bg_gray"
+            android:textSize="14sp" />
+
     </LinearLayout>
 
 
-    <LinearLayout
+    <Button
+        android:id="@+id/bt_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/bt_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/bt_login" />
-
-        <Button
-            android:id="@+id/bt_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/bt_register" />
-    </LinearLayout>
+        android:text="@string/bt_register" />
 
 </LinearLayout>

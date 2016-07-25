@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">LeShengBao</string>
-    <string name = "name_space">http://tempuri.org/</string>
+    <string name="name_space">http://tempuri.org/</string>
+    <string name="url_address">http://123.207.137.67/Ws/Login.asmx</string>
+
+
+    <!--login and register-->
+    <string name="get_yzm_method">SendYzm</string>
     <string name="login_method">TryLogin</string>
-    <string name ="url_address">http://123.207.137.67/Ws/Login.asmx</string>
+    <string name="bt_login">立即登录</string>
+    <string name="bt_register">立即注册</string>
+    <string name="et_hint_username">手机号</string>
+    <string name="et_hint_pdw">密码</string>
+    <string name="et_hint_yzm">手机验证码</string>
+    <string name="bt_get_yzm">获取手机验证码</string>
+    <string name="et_hint_confirm_pdw">确认密码</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.young.leshengbao;
+package com.young.leshengbao.options;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.young.leshengbao.R;
 import com.young.leshengbao.adapter.MainPagerAdapter;
 import com.young.leshengbao.fragments.MainFragment;
+import com.young.leshengbao.options.login.LoginActivity;
 import com.young.leshengbao.utils.ToastUtil;
 
 import de.hdodenhof.circleimageview.CircleImageView;

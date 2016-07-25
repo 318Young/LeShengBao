@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.young.leshengbao.R;
-import com.young.leshengbao.ShopDetailActivity;
+import com.young.leshengbao.options.ShopDetailActivity;
 import com.young.leshengbao.model.ShopModel;
 
 

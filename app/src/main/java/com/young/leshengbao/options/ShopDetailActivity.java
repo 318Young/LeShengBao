@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.young.leshengbao;
+package com.young.leshengbao.options;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.bumptech.glide.Glide;
+import com.young.leshengbao.R;
 import com.young.leshengbao.adapter.TestAdapter;
 
 public class ShopDetailActivity extends AppCompatActivity {

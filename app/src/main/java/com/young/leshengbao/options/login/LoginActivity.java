@@ -1,5 +1,6 @@
-package com.young.leshengbao;
+package com.young.leshengbao.options.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -7,7 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import com.young.leshengbao.R;
 import com.young.leshengbao.ansy.AnsyFactory;
+import com.young.leshengbao.ansy.CommonAsync;
 import com.young.leshengbao.ansy.ConcreFactory;
 import com.young.leshengbao.ansy.LoginAsync;
 import com.young.leshengbao.inter.LoginBack;
@@ -19,16 +22,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class LoginActivity extends ParentActivity implements View.OnClickListener ,LoginBack {
+public class LoginActivity extends ParentActivity implements View.OnClickListener, LoginBack {
 
     private EditText etUsername;
     private EditText etPassword;
 
     private Toolbar toolbar;
 
-    private AnsyFactory ansyFactory = null ;
+    private AnsyFactory ansyFactory = null;
 
-    private LoginAsync loginAsync = null;
+    private CommonAsync loginAsync = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,7 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
         findViewById(R.id.bt_login).setOnClickListener(this);
         findViewById(R.id.bt_register).setOnClickListener(this);
 
-        toolbar.setTitle("登录");
+        toolbar.setTitle(getString(R.string.bt_login));
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -76,50 +79,43 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
 
                 break;
             case R.id.bt_register:
+                startActivity(new Intent(this, RegisterActivity.class));
                 break;
             default:
                 break;
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
 
     @Override
-    public void loginSuc(TryLogin tryLogin) {
+    public void loginSuc(String requestMethod,TryLogin tryLogin) {
 
-        if(tryLogin!= null){
+        if (tryLogin != null) {
             int value = tryLogin.getValue();
 
             String memo = tryLogin.getMemo();
 
-            if(value != 1){
-                ToastUtil.showInfo(this , memo);
-            }else{
+            if (value != 1) {
+                ToastUtil.showInfo(this, memo);
+            } else {
             /*登录成功，返回主菜单页面*/
             }
         }
 
     }
 
-    public void login(){
+    public void login() {
         try {
             ansyFactory = new ConcreFactory();
-            loginAsync = ansyFactory.createAnsyProduct(LoginAsync.class);
-            Map<String , String> map = new HashMap();
-            map.put("loginName",etUsername.getText().toString());
-            map.put("Pwd",etPassword.getText().toString());
+            loginAsync = ansyFactory.createAnsyProduct(CommonAsync.class);
+            Map<String, Object> map = new HashMap();
+            map.put("loginName", etUsername.getText().toString());
+            map.put("Pwd", etPassword.getText().toString());
             loginAsync.setLoginBack(this);
             loginAsync.setContxt(this);
-            loginAsync.execute(map,null,null);
+            loginAsync.setRequestMethod(getString(R.string.login_method));
+            loginAsync.execute(map, null, null);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

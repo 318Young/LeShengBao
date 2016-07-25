@@ -16,9 +16,9 @@ import java.util.Map;
 /**
  * Created by Administrator on 2016/7/25.登录
  */
-public class LoginAsync extends AsyncTask<Map<String ,String> , Integer ,TryLogin>{
-    Map<String ,String> param = null ;
-    WebServiceOpforBt webServiceOpforBt = null ;
+public class CommonAsync extends AsyncTask<Map<String, Object>, Integer, TryLogin> {
+    Map<String, Object> param = null;
+    WebServiceOpforBt webServiceOpforBt = null;
 
     public LoginBack getLoginBack() {
         return loginBack;
@@ -28,9 +28,11 @@ public class LoginAsync extends AsyncTask<Map<String ,String> , Integer ,TryLogi
         this.loginBack = loginBack;
     }
 
-    private LoginBack loginBack = null ;
+    private LoginBack loginBack = null;
 
-    private Context contxt = null ;
+    private Context contxt = null;
+
+    private String requsetMethod = "";
 
     public Context getContxt() {
         return contxt;
@@ -40,39 +42,39 @@ public class LoginAsync extends AsyncTask<Map<String ,String> , Integer ,TryLogi
         this.contxt = contxt;
     }
 
+    public void setRequestMethod(String requestMethod) {
+        this.requsetMethod = requestMethod;
+    }
+
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
     }
 
     @Override
-    protected TryLogin doInBackground(Map<String, String>... params) {
+    protected TryLogin doInBackground(Map<String, Object>... params) {
         param = params[0];
-        String loginName = param.get("loginName");
-        String passWord = param.get("Pwd");
         webServiceOpforBt = new WebServiceOpforBt();
-        TryLogin tryLogin = null ;
-        Map map = new HashMap<>();
-        map.put("loginName", loginName);
-        map.put("Pwd", passWord);
+        TryLogin tryLogin = null;
         SoapObject soapObject = null;
         try {
-            soapObject = webServiceOpforBt.LoadResult(contxt.getString(R.string.name_space), contxt.getString(R.string.url_address), contxt.getString(R.string.login_method), map);
+            soapObject = webServiceOpforBt.LoadResult(contxt.getString(R.string.name_space), contxt.getString(R.string.url_address), requsetMethod, param);
 
-            if(soapObject == null)
+            if (soapObject == null)
                 return null;
             int result = Integer.parseInt(soapObject.getProperty("Value").toString());
 
-            String memo =soapObject.getProperty("Memo").toString();
+            String memo = soapObject.getProperty("Memo").toString();
 
-            tryLogin= new TryLogin();
+            tryLogin = new TryLogin();
             tryLogin.setValue(result);
             tryLogin.setMemo(memo);
 
 
         } catch (Exception e) {
             e.printStackTrace();
-            return null ;
+            return null;
         }
         return tryLogin;
     }
@@ -85,6 +87,6 @@ public class LoginAsync extends AsyncTask<Map<String ,String> , Integer ,TryLogi
     @Override
     protected void onPostExecute(TryLogin tryLogin) {
         super.onPostExecute(tryLogin);
-        loginBack.loginSuc("",tryLogin);
+        loginBack.loginSuc(requsetMethod, tryLogin);
     }
 }

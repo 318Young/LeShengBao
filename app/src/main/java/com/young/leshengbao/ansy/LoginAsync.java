@@ -4,10 +4,9 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.young.leshengbao.R;
-import com.young.leshengbao.interfaces.LoginBack;
+import com.young.leshengbao.inter.LoginBack;
 import com.young.leshengbao.model.TryLogin;
 import com.young.leshengbao.service.WebServiceOpforBt;
-import com.young.leshengbao.view.YoungApplication;
 
 import org.ksoap2.serialization.SoapObject;
 

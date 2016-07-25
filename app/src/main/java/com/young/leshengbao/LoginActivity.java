@@ -1,6 +1,5 @@
 package com.young.leshengbao;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -11,13 +10,10 @@ import android.widget.EditText;
 import com.young.leshengbao.ansy.AnsyFactory;
 import com.young.leshengbao.ansy.ConcreFactory;
 import com.young.leshengbao.ansy.LoginAsync;
-import com.young.leshengbao.interfaces.LoginBack;
+import com.young.leshengbao.inter.LoginBack;
 import com.young.leshengbao.model.TryLogin;
 import com.young.leshengbao.parentclass.ParentActivity;
-import com.young.leshengbao.service.WebServiceOpforBt;
 import com.young.leshengbao.utils.ToastUtil;
-
-import org.ksoap2.serialization.SoapObject;
 
 import java.util.HashMap;
 import java.util.Map;

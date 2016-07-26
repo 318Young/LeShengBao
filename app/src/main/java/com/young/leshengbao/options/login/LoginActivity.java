@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -12,10 +11,10 @@ import com.young.leshengbao.R;
 import com.young.leshengbao.ansy.AnsyFactory;
 import com.young.leshengbao.ansy.CommonAsync;
 import com.young.leshengbao.ansy.ConcreFactory;
-import com.young.leshengbao.ansy.LoginAsync;
 import com.young.leshengbao.inter.LoginBack;
 import com.young.leshengbao.model.TryLogin;
 import com.young.leshengbao.parentclass.ParentActivity;
+import com.young.leshengbao.utils.CommonUtils;
 import com.young.leshengbao.utils.ToastUtil;
 
 import java.util.HashMap;
@@ -32,6 +31,8 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
     private AnsyFactory ansyFactory = null;
 
     private CommonAsync loginAsync = null;
+
+    public static final int REGISTER_RESULT_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,25 +68,40 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_login:
-                if (TextUtils.isEmpty(etUsername.getText())) {
-                    ToastUtil.showInfo(LoginActivity.this, "请输入用户名!");
+                if (TextUtils.isEmpty(etUsername.getText().toString())) {
+                    ToastUtil.showInfo(LoginActivity.this, getString(R.string.register_no_username));
                     return;
                 }
-                if (TextUtils.isEmpty(etPassword.getText())) {
-                    ToastUtil.showInfo(LoginActivity.this, "请输入密码!");
+                if (TextUtils.isEmpty(etPassword.getText().toString())) {
+                    ToastUtil.showInfo(LoginActivity.this, getString(R.string.register_no_pdw));
+                    return;
+                }
+                if (!CommonUtils.matchPhoneNum(etUsername.getText().toString())){
+                    ToastUtil.showInfo(this,getString(R.string.input_wrong_phone_num));
                     return;
                 }
                 login();
 
                 break;
             case R.id.bt_register:
-                startActivity(new Intent(this, RegisterActivity.class));
+                startActivityForResult(new Intent(this, RegisterActivity.class),REGISTER_RESULT_CODE);
                 break;
             default:
                 break;
         }
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REGISTER_RESULT_CODE){
+            if (resultCode == 0){
+                if (null != data)
+                    etUsername.setText(data.getStringExtra("userName"));
+            }
+        }
+    }
 
     @Override
     public void loginSuc(String requestMethod,TryLogin tryLogin) {
@@ -98,11 +114,14 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
             if (value != 1) {
                 ToastUtil.showInfo(this, memo);
             } else {
-            /*登录成功，返回主菜单页面*/
+                ToastUtil.showInfo(this, "login success");
+                setResult(0,new Intent().putExtra("userName",etUsername.getText().toString()));
+            finish();
             }
         }
 
     }
+
 
     public void login() {
         try {

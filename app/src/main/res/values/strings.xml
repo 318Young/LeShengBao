@@ -7,11 +7,18 @@
     <!--login and register-->
     <string name="get_yzm_method">SendYzm</string>
     <string name="login_method">TryLogin</string>
+    <string name="register_method">Register</string>
+    <string name="input_wrong_phone_num">请输入正确的手机号</string>
     <string name="bt_login">立即登录</string>
     <string name="bt_register">立即注册</string>
     <string name="et_hint_username">手机号</string>
     <string name="et_hint_pdw">密码</string>
     <string name="et_hint_yzm">手机验证码</string>
     <string name="bt_get_yzm">获取手机验证码</string>
-    <string name="et_hint_confirm_pdw">确认密码</string>
+    <string name="register_no_username">请输入用户名</string>
+    <string name="et_pdw_less">密码至少为6位数</string>
+    <string name="et_hint_confirm_pdw">再次输入密码</string>
+    <string name="register_no_yzm">请输入收到的手机验证码</string>
+    <string name="register_no_pdw">请输入密码</string>
+    <string name="register_pdw_different">两次输入的密码不一致</string>
 </resources>

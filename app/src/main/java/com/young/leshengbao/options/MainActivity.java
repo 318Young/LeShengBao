@@ -30,6 +30,8 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
     private View headView;
     private CircleImageView iv_header;
     private TextView tv_name;
+    public static final int LOGIN_REQUEST_CODE = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,11 +102,22 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0){
+            if (resultCode == 0){
+                if (null != data)
+                tv_name.setText(data.getStringExtra("userName"));
+            }
+        }
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.iv_user_header:
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, LOGIN_REQUEST_CODE);
                 break;
         }
     }

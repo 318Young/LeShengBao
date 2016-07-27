@@ -29,7 +29,6 @@ import java.util.Map;
 public class RegisterActivity extends ParentActivity implements View.OnClickListener, LoginBack {
 
 
-    private Toolbar toolbar;
 
     private Button btGetYzm,btRegister;
     private EditText etUserName,etYzm,etPwd, etConfirmPwd;
@@ -42,8 +41,6 @@ public class RegisterActivity extends ParentActivity implements View.OnClickList
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
@@ -53,11 +50,7 @@ public class RegisterActivity extends ParentActivity implements View.OnClickList
 
     @Override
     public void initViews() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.bt_register));
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btGetYzm = (Button) findViewById(R.id.bt_get_yzm);
         btGetYzm.setOnClickListener(this);
         btRegister = (Button) findViewById(R.id.bt_register);
@@ -133,6 +126,7 @@ public class RegisterActivity extends ParentActivity implements View.OnClickList
             map.put("phonenum", etUserName.getText().toString());
             registerAsync.setLoginBack(this);
             registerAsync.setContxt(this);
+            registerAsync.setUrl(getString(R.string.login_url));
             registerAsync.setRequestMethod(getString(R.string.get_yzm_method));
             registerAsync.execute(map, null, null);
 
@@ -151,6 +145,7 @@ public class RegisterActivity extends ParentActivity implements View.OnClickList
             map.put("pwd", etPwd.getText().toString());
             registerAsync.setLoginBack(this);
             registerAsync.setContxt(this);
+            registerAsync.setUrl(getString(R.string.login_url));
             registerAsync.setRequestMethod(getString(R.string.register_method));
             registerAsync.execute(map, null, null);
 

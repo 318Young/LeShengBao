@@ -1,13 +1,15 @@
 <resources>
     <string name="app_name">LeShengBao</string>
     <string name="name_space">http://tempuri.org/</string>
-    <string name="url_address">http://123.207.137.67/Ws/Login.asmx</string>
+    <string name="login_url">http://123.207.137.67/Ws/Login.asmx</string>
+    <string name="userInfo_url">http://123.207.137.67/Ws/UserInfo.asmx</string>
 
-
-    <!--login and register-->
+    <!--Request method -->
     <string name="get_yzm_method">SendYzm</string>
     <string name="login_method">TryLogin</string>
     <string name="register_method">Register</string>
+    <string name="getUserInfo_method">GetUserInfo</string>
+    <!--login and register-->
     <string name="input_wrong_phone_num">请输入正确的手机号</string>
     <string name="bt_login">立即登录</string>
     <string name="bt_register">立即注册</string>

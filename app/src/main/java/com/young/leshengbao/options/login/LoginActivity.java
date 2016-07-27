@@ -16,6 +16,7 @@ import com.young.leshengbao.model.TryLogin;
 import com.young.leshengbao.parentclass.ParentActivity;
 import com.young.leshengbao.utils.CommonUtils;
 import com.young.leshengbao.utils.ToastUtil;
+import com.young.leshengbao.view.YoungApplication;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,13 +27,14 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
     private EditText etUsername;
     private EditText etPassword;
 
-    private Toolbar toolbar;
 
     private AnsyFactory ansyFactory = null;
 
     private CommonAsync loginAsync = null;
 
     public static final int REGISTER_RESULT_CODE = 1;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +50,11 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
     public void initViews() {
         etUsername = (EditText) findViewById(R.id.et_username);
         etPassword = (EditText) findViewById(R.id.et_password);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
         findViewById(R.id.bt_login).setOnClickListener(this);
         findViewById(R.id.bt_register).setOnClickListener(this);
 
         toolbar.setTitle(getString(R.string.bt_login));
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
     }
 
@@ -115,6 +114,8 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
                 ToastUtil.showInfo(this, memo);
             } else {
                 ToastUtil.showInfo(this, "login success");
+                YoungApplication.mPreference.edit().putString("userId",memo.split(",")[0]).commit();
+                YoungApplication.mPreference.edit().putString("userPwd",CommonUtils.getMD5(etPassword+memo.split(",")[1])).commit();
                 setResult(0,new Intent().putExtra("userName",etUsername.getText().toString()));
             finish();
             }
@@ -132,6 +133,7 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
             map.put("Pwd", etPassword.getText().toString());
             loginAsync.setLoginBack(this);
             loginAsync.setContxt(this);
+            loginAsync.setUrl(getString(R.string.login_url));
             loginAsync.setRequestMethod(getString(R.string.login_method));
             loginAsync.execute(map, null, null);
 

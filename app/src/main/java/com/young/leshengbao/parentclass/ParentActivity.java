@@ -3,14 +3,19 @@ package com.young.leshengbao.parentclass;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+
+import com.young.leshengbao.R;
 
 /**
  * Created by Administrator on 2016/7/23.
  */
 public abstract class ParentActivity extends AppCompatActivity {
     private String TAG = "ParentActivity";
+
+    public Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,10 +25,14 @@ public abstract class ParentActivity extends AppCompatActivity {
         } else {
             Log.e(TAG, "add layout");
         }
-
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         initViews();
-
         initDates();
+        if (null != toolbar){
+            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     /**

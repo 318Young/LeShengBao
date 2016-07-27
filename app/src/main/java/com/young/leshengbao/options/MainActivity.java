@@ -10,20 +10,35 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.young.leshengbao.R;
 import com.young.leshengbao.adapter.MainPagerAdapter;
+import com.young.leshengbao.ansy.AnsyFactory;
+import com.young.leshengbao.ansy.CommonAsync;
+import com.young.leshengbao.ansy.ConcreFactory;
 import com.young.leshengbao.fragments.MainFragment;
+import com.young.leshengbao.inter.LoginBack;
+import com.young.leshengbao.model.GetInfo;
+import com.young.leshengbao.model.TryLogin;
 import com.young.leshengbao.options.login.LoginActivity;
+import com.young.leshengbao.options.userInfo.UserInfoActivity;
 import com.young.leshengbao.utils.ToastUtil;
+
+import com.google.gson.Gson;
+import com.young.leshengbao.view.YoungApplication;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class  MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class  MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DrawerLayout mDrawerLayout;
     private NavigationView navigationView;
@@ -31,6 +46,8 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
     private CircleImageView iv_header;
     private TextView tv_name;
     public static final int LOGIN_REQUEST_CODE = 0;
+    private boolean isLogin = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,12 +91,12 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
-            case R.id.nav_home:
-                ToastUtil.showInfo(MainActivity.this, "Home");
-                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 
     private void setupViewPager(ViewPager viewPager) {
         MainPagerAdapter adapter = new MainPagerAdapter(getSupportFragmentManager());
@@ -94,6 +111,11 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        switch (menuItem.getItemId()){
+                            case R.id.nav_home:
+                                startActivity(new Intent(MainActivity.this, UserInfoActivity.class));
+                                break;
+                        }
                         menuItem.setChecked(true);
                         mDrawerLayout.closeDrawers();
                         return true;
@@ -106,8 +128,10 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0){
             if (resultCode == 0){
-                if (null != data)
-                tv_name.setText(data.getStringExtra("userName"));
+                if (null != data){
+                    isLogin = true;
+                    tv_name.setText(data.getStringExtra("userName"));
+                }
             }
         }
     }
@@ -116,8 +140,11 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.iv_user_header:
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                if (false == isLogin){
+
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                }
                 break;
         }
     }
@@ -126,4 +153,6 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
     protected void onStart() {
         super.onStart();
     }
+
+
 }

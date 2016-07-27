@@ -19,6 +19,7 @@ import java.util.Map;
 public class CommonAsync extends AsyncTask<Map<String, Object>, Integer, TryLogin> {
     Map<String, Object> param = null;
     WebServiceOpforBt webServiceOpforBt = null;
+    private String url = "";
 
     public LoginBack getLoginBack() {
         return loginBack;
@@ -36,6 +37,10 @@ public class CommonAsync extends AsyncTask<Map<String, Object>, Integer, TryLogi
 
     public Context getContxt() {
         return contxt;
+    }
+
+    public void setUrl(String url){
+        this.url = url;
     }
 
     public void setContxt(Context contxt) {
@@ -59,7 +64,7 @@ public class CommonAsync extends AsyncTask<Map<String, Object>, Integer, TryLogi
         TryLogin tryLogin = null;
         SoapObject soapObject = null;
         try {
-            soapObject = webServiceOpforBt.LoadResult(contxt.getString(R.string.name_space), contxt.getString(R.string.url_address), requsetMethod, param);
+            soapObject = webServiceOpforBt.LoadResult(contxt.getString(R.string.name_space), url, requsetMethod, param);
 
             if (soapObject == null)
                 return null;

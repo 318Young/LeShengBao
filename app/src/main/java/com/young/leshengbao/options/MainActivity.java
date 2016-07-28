@@ -10,30 +10,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.young.leshengbao.R;
 import com.young.leshengbao.adapter.MainPagerAdapter;
-import com.young.leshengbao.ansy.AnsyFactory;
-import com.young.leshengbao.ansy.CommonAsync;
-import com.young.leshengbao.ansy.ConcreFactory;
 import com.young.leshengbao.fragments.MainFragment;
-import com.young.leshengbao.inter.LoginBack;
-import com.young.leshengbao.model.GetInfo;
-import com.young.leshengbao.model.TryLogin;
 import com.young.leshengbao.options.login.LoginActivity;
-import com.young.leshengbao.options.userInfo.UserInfoActivity;
-import com.young.leshengbao.utils.ToastUtil;
-
-import com.google.gson.Gson;
-import com.young.leshengbao.view.YoungApplication;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.young.leshengbao.options.userinfo.UserInfoActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 

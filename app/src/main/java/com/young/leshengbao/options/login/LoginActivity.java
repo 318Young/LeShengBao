@@ -2,7 +2,6 @@ package com.young.leshengbao.options.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -33,7 +32,6 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
     private CommonAsync loginAsync = null;
 
     public static final int REGISTER_RESULT_CODE = 1;
-
 
 
     @Override
@@ -75,15 +73,15 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
                     ToastUtil.showInfo(LoginActivity.this, getString(R.string.register_no_pdw));
                     return;
                 }
-                if (!CommonUtils.matchPhoneNum(etUsername.getText().toString())){
-                    ToastUtil.showInfo(this,getString(R.string.input_wrong_phone_num));
+                if (!CommonUtils.matchPhoneNum(etUsername.getText().toString())) {
+                    ToastUtil.showInfo(this, getString(R.string.input_wrong_phone_num));
                     return;
                 }
                 login();
 
                 break;
             case R.id.bt_register:
-                startActivityForResult(new Intent(this, RegisterActivity.class),REGISTER_RESULT_CODE);
+                startActivityForResult(new Intent(this, RegisterActivity.class), REGISTER_RESULT_CODE);
                 break;
             default:
                 break;
@@ -94,8 +92,8 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REGISTER_RESULT_CODE){
-            if (resultCode == 0){
+        if (requestCode == REGISTER_RESULT_CODE) {
+            if (resultCode == 0) {
                 if (null != data)
                     etUsername.setText(data.getStringExtra("userName"));
             }
@@ -103,7 +101,7 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
     }
 
     @Override
-    public void loginSuc(String requestMethod,TryLogin tryLogin) {
+    public void loginSuc(String requestMethod, TryLogin tryLogin) {
 
         if (tryLogin != null) {
             int value = tryLogin.getValue();
@@ -114,10 +112,10 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
                 ToastUtil.showInfo(this, memo);
             } else {
                 ToastUtil.showInfo(this, "login success");
-                YoungApplication.mPreference.edit().putString("userId",memo.split(",")[0]).commit();
-                YoungApplication.mPreference.edit().putString("userPwd",CommonUtils.getMD5(etPassword+memo.split(",")[1])).commit();
-                setResult(0,new Intent().putExtra("userName",etUsername.getText().toString()));
-            finish();
+                YoungApplication.mPreference.edit().putString("userId", memo.split(",")[0]).commit();
+                YoungApplication.mPreference.edit().putString("userPwd", CommonUtils.getMD5(etPassword.getText().toString() + memo.split(",")[1])).commit();
+                setResult(0, new Intent().putExtra("userName", etUsername.getText().toString()));
+                finish();
             }
         }
 

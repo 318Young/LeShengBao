@@ -16,6 +16,7 @@ import com.young.leshengbao.model.GetInfo;
 import com.young.leshengbao.model.TryLogin;
 import com.young.leshengbao.model.UserInfo;
 import com.young.leshengbao.parentclass.ParentActivity;
+import com.young.leshengbao.utils.CommonUtils;
 import com.young.leshengbao.utils.ToastUtil;
 import com.young.leshengbao.view.YoungApplication;
 
@@ -60,19 +61,7 @@ public class UserInfoActivity extends ParentActivity implements LoginBack{
             ansyFactory = new ConcreFactory();
             loginAsync = ansyFactory.createAnsyProduct(CommonAsync.class);
             Map<String, Object> map = new HashMap();
-
-            GetInfo info = new GetInfo();
-            info.setUserId(YoungApplication.mPreference.getString("userId",""));
-            info.setUserPwd(YoungApplication.mPreference.getString("userPwd",""));
-
-
-
-            String json = "["+new Gson().toJson(info) + "]";
-            String xml = Base64.encodeToString(json.getBytes(),Base64.NO_WRAP);
-
-            System.out.println(json);
-            Log.w("xml",xml);
-            map.put("xml", xml);
+            map.put("xml", CommonUtils.getXml());
             loginAsync.setLoginBack(this);
             loginAsync.setContxt(this);
             loginAsync.setUrl(getString(R.string.userInfo_url));

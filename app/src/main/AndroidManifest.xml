@@ -22,6 +22,7 @@
         <activity android:name=".options.login.RegisterActivity" />
         <activity android:name=".options.ShopDetailActivity" />
         <activity android:name=".options.userinfo.UserInfoActivity" />
+        <activity android:name=".options.userinfo.MyMsgActivity" />
     </application>
 
 </manifest>

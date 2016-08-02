@@ -9,6 +9,7 @@
     <string name="login_method">TryLogin</string>
     <string name="register_method">Register</string>
     <string name="getUserInfo_method">GetUserInfo</string>
+    <string name="getMyMsg_method">GetAllMsgList</string>
     <!--login and register-->
     <string name="input_wrong_phone_num">请输入正确的手机号</string>
     <string name="bt_login">立即登录</string>

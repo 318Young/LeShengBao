@@ -18,6 +18,7 @@ import com.young.leshengbao.R;
 import com.young.leshengbao.adapter.MainPagerAdapter;
 import com.young.leshengbao.fragments.MainFragment;
 import com.young.leshengbao.options.login.LoginActivity;
+import com.young.leshengbao.options.userinfo.MyMsgActivity;
 import com.young.leshengbao.options.userinfo.UserInfoActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -99,6 +100,9 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
                         switch (menuItem.getItemId()){
                             case R.id.nav_home:
                                 startActivity(new Intent(MainActivity.this, UserInfoActivity.class));
+                                break;
+                            case R.id.nav_messages:
+                                startActivity(new Intent(MainActivity.this, MyMsgActivity.class));
                                 break;
                         }
                         menuItem.setChecked(true);

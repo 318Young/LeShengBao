@@ -1,8 +1,19 @@
 package com.young.leshengbao.utils;
 
+import android.util.Base64;
+import android.util.Log;
+
+import com.google.gson.Gson;
+import com.young.leshengbao.model.GetInfo;
+import com.young.leshengbao.view.YoungApplication;
+
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,15 +23,28 @@ import java.util.regex.Pattern;
 public class CommonUtils {
 
 
-    public static boolean matchPhoneNum(String phoneNum){
+    public static boolean matchPhoneNum(String phoneNum) {
 
         Pattern pattern = Pattern.compile("^1[3-8][0-9][0-9]{8}$");
         Matcher matcher = pattern.matcher(phoneNum);
         return matcher.matches();
     }
 
-    public static String getMD5(String str) {
+    public static String getXml() {
 
+        List<GetInfo> listJson = new ArrayList<>();
+        GetInfo info = new GetInfo();
+        info.setUserId(YoungApplication.mPreference.getString("userId", ""));
+        info.setUserPwd(YoungApplication.mPreference.getString("userPwd", ""));
+        listJson.add(info);
+        String json = new Gson().toJson(listJson);
+        Log.d("Json", "getXml: " + json);
+        return Base64.encodeToString(json.getBytes(), Base64.NO_WRAP);
+
+    }
+
+
+    public static String getMD5(String str) {
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
             md5.update(str.getBytes("UTF-8"));

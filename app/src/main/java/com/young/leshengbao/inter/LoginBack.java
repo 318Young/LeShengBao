@@ -12,6 +12,7 @@ public interface LoginBack {
      * @param requestMethod 请求方法，用来区分同一页面多个请求
      * @param tryLogin
      */
+
     public void loginSuc(String requestMethod,TryLogin tryLogin);
 
 }

@@ -18,6 +18,7 @@ import com.young.leshengbao.R;
 import com.young.leshengbao.adapter.MainPagerAdapter;
 import com.young.leshengbao.fragments.MainFragment;
 import com.young.leshengbao.options.login.LoginActivity;
+import com.young.leshengbao.options.userInfo.*;
 import com.young.leshengbao.options.userinfo.MyMsgActivity;
 import com.young.leshengbao.options.userinfo.UserInfoActivity;
 

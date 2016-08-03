@@ -21,6 +21,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 流水账单
+ */
 
 public class UserRecordActivity extends ParentActivity implements LoginBack{
 

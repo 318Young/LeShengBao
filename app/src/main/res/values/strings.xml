@@ -9,6 +9,7 @@
     <string name="login_method">TryLogin</string>
     <string name="register_method">Register</string>
     <string name="getUserInfo_method">GetUserInfo</string>
+    <string name="getMyMsg_method">GetAllMsgList</string>
     <string name="getNoReadMsgCount">GetNoReadMsgCount</string>
     <string name="getUserRecord">GetUserRecord</string>
     <!--login and register-->

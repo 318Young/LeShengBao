@@ -18,6 +18,7 @@ import com.young.leshengbao.R;
 import com.young.leshengbao.adapter.MainPagerAdapter;
 import com.young.leshengbao.fragments.MainFragment;
 import com.young.leshengbao.options.login.LoginActivity;
+import com.young.leshengbao.options.userinfo.MyMsgActivity;
 import com.young.leshengbao.options.userinfo.UserInfoActivity;
 import com.young.leshengbao.options.userinfo.UserRecordActivity;
 
@@ -100,6 +101,9 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
                         switch (menuItem.getItemId()){
                             case R.id.nav_home:
                                 startActivity(new Intent(MainActivity.this, UserInfoActivity.class));
+                                break;
+                            case R.id.nav_messages:/*我的消息*/
+                                startActivity(new Intent(MainActivity.this, MyMsgActivity.class));
                                 break;
                             case R.id.nav_discussion:/*流水账单*/
                                 startActivity(new Intent(MainActivity.this, UserRecordActivity.class));

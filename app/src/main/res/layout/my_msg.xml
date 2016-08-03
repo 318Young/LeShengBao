@@ -16,8 +16,9 @@
     <ListView
         android:id="@+id/lv_my_msg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="5dp"
+        android:scrollbars="none"
         android:divider="@null"
         android:dividerHeight="10dp"/>
 </LinearLayout>

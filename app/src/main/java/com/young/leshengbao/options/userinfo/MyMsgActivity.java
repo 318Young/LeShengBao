@@ -64,6 +64,7 @@ public class MyMsgActivity extends ParentActivity implements LoginBack {
         try {
             getMsgsAsync = ansyFactory.createAnsyProduct(CommonAsync.class);
             Map<String, Object> map = new HashMap();
+            Log.d("MyMsg---", "getXml: "+CommonUtils.getXml());
             map.put("xml", CommonUtils.getXml());
             map.put("pageindex", 0);
             map.put("pagecount", 10);
@@ -86,8 +87,9 @@ public class MyMsgActivity extends ParentActivity implements LoginBack {
                     if (1 == tryLogin.getValue()){
                         String json = new String(Base64.decode(tryLogin.getMemo().getBytes(),Base64.NO_WRAP));
                         JSONArray ja = new JSONArray(json);
+                        Gson gson = new Gson();
                         for (int i = 0; i <ja.length() ; i++) {
-                            datas.add(new Gson().fromJson(ja.get(i).toString(),MyMsg.class));
+                            datas.add(gson.fromJson(ja.get(i).toString(),MyMsg.class));
                         }
                         msgAdapter = new MyMsgAdapter(this,datas);
                         lvMyMsg.setAdapter(msgAdapter);

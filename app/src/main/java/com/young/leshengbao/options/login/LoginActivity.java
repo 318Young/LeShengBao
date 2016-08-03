@@ -115,7 +115,7 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
             } else {
                 ToastUtil.showInfo(this, "login success");
                 YoungApplication.mPreference.edit().putString("userId",memo.split(",")[0]).commit();
-                YoungApplication.mPreference.edit().putString("userPwd",CommonUtils.getMD5(etPassword+memo.split(",")[1])).commit();
+                YoungApplication.mPreference.edit().putString("userPwd",CommonUtils.getMD5(etPassword.getText()+memo.split(",")[1])).commit();
                 setResult(0,new Intent().putExtra("userName",etUsername.getText().toString()));
                 finish();
             }

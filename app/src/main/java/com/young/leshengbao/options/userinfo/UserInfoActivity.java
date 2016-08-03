@@ -53,6 +53,7 @@ public class UserInfoActivity extends ParentActivity implements LoginBack{
     public void initDates() {
 
         getUserInfo();
+        getNoReadMsgCount();
     }
 
 
@@ -73,6 +74,22 @@ public class UserInfoActivity extends ParentActivity implements LoginBack{
         }
     }
 
+    public void getNoReadMsgCount(){
+        try{
+            ansyFactory = new ConcreFactory();
+            loginAsync = ansyFactory.createAnsyProduct(CommonAsync.class);
+            Map<String, Object> map = new HashMap();
+            map.put("xml", CommonUtils.getXml());
+            loginAsync.setLoginBack(this);
+            loginAsync.setContxt(this);
+            loginAsync.setUrl(getString(R.string.userInfo_url));
+            loginAsync.setRequestMethod(getString(R.string.getNoReadMsgCount));
+            loginAsync.execute(map, null, null);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void loginSuc(String requestMethod, TryLogin tryLogin) {
         if (getString(R.string.getUserInfo_method).equals(requestMethod)){
@@ -83,6 +100,11 @@ public class UserInfoActivity extends ParentActivity implements LoginBack{
                 ToastUtil.showInfo(this,info.toString());
             }
 
+        }else if(getString(R.string.getNoReadMsgCount).equals(requestMethod)){
+            if(null != tryLogin){
+                int  noReadMsgcount = Integer.valueOf(tryLogin.getMemo());/*未读信息条数*/
+                ToastUtil.showInfo(this,noReadMsgcount+"");
+            }
         }
     }
 }

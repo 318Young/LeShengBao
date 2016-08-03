@@ -9,7 +9,8 @@
     <string name="login_method">TryLogin</string>
     <string name="register_method">Register</string>
     <string name="getUserInfo_method">GetUserInfo</string>
-    <string name="getMyMsg_method">GetAllMsgList</string>
+    <string name="getNoReadMsgCount">GetNoReadMsgCount</string>
+    <string name="getUserRecord">GetUserRecord</string>
     <!--login and register-->
     <string name="input_wrong_phone_num">请输入正确的手机号</string>
     <string name="bt_login">立即登录</string>
@@ -24,4 +25,5 @@
     <string name="register_no_yzm">请输入收到的手机验证码</string>
     <string name="register_no_pdw">请输入密码</string>
     <string name="register_pdw_different">两次输入的密码不一致</string>
+    <string name="title_activity_user_record">流水账单</string>
 </resources>

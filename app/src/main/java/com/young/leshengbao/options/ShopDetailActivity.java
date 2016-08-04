@@ -22,6 +22,8 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -32,8 +34,8 @@ import com.young.leshengbao.adapter.TestAdapter;
 public class ShopDetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_NAME = "shop_name";
-    private ListView lv_detail;
-
+    private WebView mWebView;
+    private WebSettings mWebSetting;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +56,15 @@ public class ShopDetailActivity extends AppCompatActivity {
 
         loadBackdrop();
 
-        lv_detail = (ListView) findViewById(R.id.lv_detail);
-        lv_detail.setAdapter(new TestAdapter(this));
+        mWebView = (WebView) findViewById(R.id.wv_detail);
+        mWebSetting = mWebView.getSettings();
+
+
+        //设置支持javascript
+        mWebSetting.setJavaScriptEnabled(true);
+        mWebView.loadUrl("http://blog.csdn.net/lightyearwp/article/details/5419973");
+//        lv_detail = (ListView) findViewById(R.id.lv_detail);
+//        lv_detail.setAdapter(new TestAdapter(this));
     }
 
     private void loadBackdrop() {

@@ -102,10 +102,10 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
                             case R.id.nav_home:
                                 startActivity(new Intent(MainActivity.this, UserInfoActivity.class));
                                 break;
-                            case R.id.nav_messages:/*我的消息*/
+                            case R.id.nav_recharge:/*我的消息*/
                                 startActivity(new Intent(MainActivity.this, MyMsgActivity.class));
                                 break;
-                            case R.id.nav_discussion:/*流水账单*/
+                            case R.id.nav_record:/*流水账单*/
                                 startActivity(new Intent(MainActivity.this, UserRecordActivity.class));
                                 break;
                         }

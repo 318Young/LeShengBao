@@ -19,4 +19,6 @@
     <color name="font_gray">#A6AFC6</color>
     <color name="font_blue_deep">#242A38</color>
     <color name="font_white">#ffffff</color>
+
+    <color name="normal_bar_text_color">#424242</color>
 </resources>

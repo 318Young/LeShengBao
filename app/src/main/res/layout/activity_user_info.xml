@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/bg_gray"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -37,9 +37,147 @@
             android:textColor="@color/white"
             android:layout_marginTop="10dp"
             android:textSize="14sp"
-            />
+            android:text="18300149787"/>
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/ll_message"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@drawable/normal_bar_bg"
+        android:layout_marginTop="14dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_me"
+            android:layout_marginLeft="14dp"
+            />
+        <TextView
+            style="@style/normal_bar_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="我的消息"
+            />
+        <TextView
+            android:id="@+id/tv_msg_count"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginRight="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:background="@drawable/circle"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="5"/>
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/ll_me_lb"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@drawable/normal_bar_bg"
+        android:layout_marginTop="18dp"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_me"
+            android:layout_marginLeft="14dp"
+            />
+        <TextView
+            style="@style/normal_bar_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的乐币"
+            />
+        <TextView
+            android:id="@+id/tv_lb_value"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:textColor="@color/bg_blue_deep"
+            android:layout_gravity="center_vertical"
+            android:gravity="right"
+            android:text="5000"/>
+        <TextView
+            android:id="@+id/tv_chongzhi"
+            android:layout_width="70dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:text="充值"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:background="#887412"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_create_time"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@drawable/normal_bar_bg"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_me"
+            android:layout_marginLeft="14dp"
+            />
+        <TextView
+            style="@style/normal_bar_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="创建时间"
+            />
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:textColor="@color/bg_gray"
+            android:layout_gravity="center_vertical"
+            android:gravity="right"
+            android:text="2016年7月28日22:40:29"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_ls_zd"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@drawable/normal_bar_bg"
+        android:layout_marginTop="14dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_me"
+            android:layout_marginLeft="14dp"
+            />
+        <TextView
+            style="@style/normal_bar_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="流水账单"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_logout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="12dp"
+        android:background="#FF0000"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:text="退出登录"
+        android:gravity="center"/>
 </LinearLayout>

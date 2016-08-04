@@ -7,4 +7,11 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="list_item_avatar_size">40dp</dimen>
     <dimen name="item_height">200dp</dimen>
+    <dimen name="user_record_item_head">40dp</dimen>
+    <dimen name="user_record_item_content">70dp</dimen>
+    <dimen name="user_record_item_width">85dp</dimen>
+    <dimen name = "dividerHeight">3dp</dimen>
+    <dimen name="header_width">40dp</dimen>
+    <dimen name="pad">5dp</dimen>
+    <dimen name="content_textsize">18sp</dimen>
 </resources>

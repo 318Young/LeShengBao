@@ -6,13 +6,13 @@ package com.young.leshengbao.model;
 public class UserRecord {
 
     private String id ; /*记录id*/
-    private String xtb; /*金额*/
+    private int xtb; /*金额*/
     private String createtime; /*创建时间*/
     private String createtime_d ; /*创建时间带时分秒*/
-    private String flag ; /*出入*/
+    private int flag ; /*出入*/
     private String userid ; /*用户id*/
     private String typeCN ; /*记录类型*/
-    private String type ; /*记录类型标识*/
+    private int type ; /*记录类型标识*/
     private String u_name ; /*用户名*/
 
     public String getId() {
@@ -23,13 +23,7 @@ public class UserRecord {
         this.id = id;
     }
 
-    public String getXtb() {
-        return xtb;
-    }
 
-    public void setXtb(String xtb) {
-        this.xtb = xtb;
-    }
 
     public String getCreatetime() {
         return createtime;
@@ -47,13 +41,7 @@ public class UserRecord {
         this.createtime_d = createtime_d;
     }
 
-    public String getFlag() {
-        return flag;
-    }
 
-    public void setFlag(String flag) {
-        this.flag = flag;
-    }
 
     public String getUserid() {
         return userid;
@@ -71,11 +59,27 @@ public class UserRecord {
         this.typeCN = typeCN;
     }
 
-    public String getType() {
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
+    public int getXtb() {
+        return xtb;
+    }
+
+    public void setXtb(int xtb) {
+        this.xtb = xtb;
+    }
+
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 

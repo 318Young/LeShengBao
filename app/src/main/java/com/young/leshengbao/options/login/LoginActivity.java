@@ -35,6 +35,7 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
     private CommonAsync loginAsync = null;
 
     public static final int REGISTER_RESULT_CODE = 1;
+    private String userPhone;
 
 
 
@@ -118,6 +119,7 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
                 ToastUtil.showInfo(this, "login success");
                 SharedPreferencesUtils.setStringValue(LoginActivity.this, PreConstants.LSB_USERID, memo.split(",")[0]);
                 SharedPreferencesUtils.setStringValue(LoginActivity.this, PreConstants.LSB_USERPWD, CommonUtils.getMD5(etPassword.getText()+memo.split(",")[1]));
+                SharedPreferencesUtils.setStringValue(LoginActivity.this, PreConstants.LSB_USERPHONE, etUsername.getText().toString());
                 SharedPreferencesUtils.setBooleanValue(LoginActivity.this, PreConstants.LSB_ISLOGIN, true);
                 setResult(0,new Intent().putExtra("userName",etUsername.getText().toString()));
                 finish();

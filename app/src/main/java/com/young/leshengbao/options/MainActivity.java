@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.young.leshengbao.R;
 import com.young.leshengbao.adapter.MainPagerAdapter;
@@ -71,6 +72,13 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
 
 
             iv_header.setOnClickListener(this);
+
+            if (SharedPreferencesUtils.getBooleanValue(this, PreConstants.LSB_ISLOGIN, false)){
+                tv_name.setText(SharedPreferencesUtils.getStringValue(this, PreConstants.LSB_USERPHONE, ""));
+            } else {
+                tv_name.setText("请登录");
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -106,6 +114,8 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
                             case R.id.nav_home:
                                 if (SharedPreferencesUtils.getBooleanValue(MainActivity.this, PreConstants.LSB_ISLOGIN, false)){
                                     startActivity(new Intent(MainActivity.this, UserInfoActivity.class));
+                                } else {
+                                    Toast.makeText(MainActivity.this,"please login", Toast.LENGTH_SHORT).show();
                                 }
                                 break;
                             case R.id.nav_recharge:/*我的消息*/

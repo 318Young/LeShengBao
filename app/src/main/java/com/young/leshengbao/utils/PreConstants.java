@@ -6,5 +6,6 @@ package com.young.leshengbao.utils;
 public class PreConstants {
     public static final String LSB_USERID = "lsb_userid";
     public static final String LSB_USERPWD = "lsb_userpwd";
+    public static final String LSB_USERPHONE = "lsb_userphone";
     public static final String LSB_ISLOGIN = "lsb_islogin";
 }

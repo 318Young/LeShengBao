@@ -9,6 +9,7 @@ import java.util.Date;
  * Created by chenhe on 2016/8/5.
  */
 public class DateUtils {
+    public static String[] weekName = { "周日", "周一", "周二", "周三", "周四", "周五","周六" };
 
     /**
      * 判断指定的某一天是星期几

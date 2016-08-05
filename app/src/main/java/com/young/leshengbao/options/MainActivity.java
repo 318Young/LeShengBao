@@ -44,7 +44,7 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.e("****",DateUtils.getWeekDayFromDate(2016,8, 1)+"-----");
+        Log.e("****",DateUtils.getWeekDayFromDate(2016,8, 7)+"-----");
         try {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);

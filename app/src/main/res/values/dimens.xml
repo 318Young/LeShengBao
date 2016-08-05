@@ -14,4 +14,5 @@
     <dimen name="header_width">40dp</dimen>
     <dimen name="pad">5dp</dimen>
     <dimen name="content_textsize">18sp</dimen>
+    <dimen name="big_space">18dp</dimen>
 </resources>

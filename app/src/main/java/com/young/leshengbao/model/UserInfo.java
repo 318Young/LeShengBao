@@ -13,7 +13,7 @@ public class UserInfo implements Serializable{
     private String u_mobile;
     private int safepwd;
 
-    public UserInfo(float u_xtb, String u_createtime, String u_mobile, int safepwd) {
+    public UserInfo(double u_xtb, String u_createtime, String u_mobile, int safepwd) {
         this.u_xtb = u_xtb;
         this.u_createtime = u_createtime;
         this.u_mobile = u_mobile;

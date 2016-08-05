@@ -118,6 +118,7 @@ public class UserRecordActivity extends ParentActivity implements LoginBack{
             ansyFactory = new ConcreFactory();
             loginAsync = ansyFactory.createAnsyProduct(CommonAsync.class);
             Map<String, Object> map = new HashMap();
+            map.put("xml", CommonUtils.getXml(UserRecordActivity.this));
             System.out.println("xml-----"+CommonUtils.getXml());
             map.put("xml", CommonUtils.getXml());
             map.put("pageindex" , 0);

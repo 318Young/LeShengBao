@@ -15,6 +15,8 @@ import com.young.leshengbao.inter.LoginBack;
 import com.young.leshengbao.model.TryLogin;
 import com.young.leshengbao.parentclass.ParentActivity;
 import com.young.leshengbao.utils.CommonUtils;
+import com.young.leshengbao.utils.PreConstants;
+import com.young.leshengbao.utils.SharedPreferencesUtils;
 import com.young.leshengbao.utils.ToastUtil;
 import com.young.leshengbao.view.YoungApplication;
 
@@ -114,8 +116,9 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
                 ToastUtil.showInfo(this, memo);
             } else {
                 ToastUtil.showInfo(this, "login success");
-                YoungApplication.mPreference.edit().putString("userId",memo.split(",")[0]).commit();
-                YoungApplication.mPreference.edit().putString("userPwd",CommonUtils.getMD5(etPassword.getText()+memo.split(",")[1])).commit();
+                SharedPreferencesUtils.setStringValue(LoginActivity.this, PreConstants.LSB_USERID, memo.split(",")[0]);
+                SharedPreferencesUtils.setStringValue(LoginActivity.this, PreConstants.LSB_USERPWD, CommonUtils.getMD5(etPassword.getText()+memo.split(",")[1]));
+                SharedPreferencesUtils.setBooleanValue(LoginActivity.this, PreConstants.LSB_ISLOGIN, true);
                 setResult(0,new Intent().putExtra("userName",etUsername.getText().toString()));
                 finish();
             }

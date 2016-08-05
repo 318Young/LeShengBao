@@ -8,12 +8,10 @@ import android.content.SharedPreferences;
  */
 public class YoungApplication  extends Application{
 
-    public static SharedPreferences mPreference;
     public static YoungApplication instance = null ;
     @Override
     public void onCreate() {
         super.onCreate();
-        mPreference = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         instance = this ;
     }
 

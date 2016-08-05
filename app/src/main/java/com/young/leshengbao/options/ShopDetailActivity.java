@@ -24,6 +24,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -63,6 +64,13 @@ public class ShopDetailActivity extends AppCompatActivity {
         //设置支持javascript
         mWebSetting.setJavaScriptEnabled(true);
         mWebView.loadUrl("http://blog.csdn.net/lightyearwp/article/details/5419973");
+        mWebView.setWebViewClient(new WebViewClient() {
+            public boolean shouldOverrideUrlLoading(WebView view, String url)
+            { //  重写此方法表明点击网页里面的链接还是在当前的webview里跳转，不跳到浏览器那边
+                view.loadUrl(url);
+                return true;
+            }
+        });
 //        lv_detail = (ListView) findViewById(R.id.lv_detail);
 //        lv_detail.setAdapter(new TestAdapter(this));
     }

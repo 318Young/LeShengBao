@@ -4,48 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_gray"
+    android:background="@color/bg_light_gray"
     android:gravity="center_horizontal"
     android:orientation="vertical">
-
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/main_abl_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:layout_scrollFlags="scroll|enterAlways|snap"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="192dp"
-        android:background="?attr/colorPrimaryDark"
-        android:padding="16dp"
-        android:orientation="vertical"
-        android:gravity="center">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_user_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_logo"/>
-        <TextView
-            android:id="@+id/tv_userName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"
-            android:textSize="14sp"
-            android:text="18300149787"/>
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/main_iv_placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/p10"
+                app:layout_collapseMode="parallax" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="16dp"
+                android:orientation="vertical"
+                android:gravity="center">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_user_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_logo"/>
+                <TextView
+                    android:id="@+id/tv_userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:textSize="14sp"
+                    android:text="18300149787"/>
+
+            </LinearLayout>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_collapseMode="pin" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
 
     <LinearLayout
         android:id="@+id/ll_message"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:background="@drawable/normal_bar_bg"
+        android:background="@drawable/bg_me_selector"
         android:layout_marginTop="14dp">
         <ImageView
             android:layout_width="wrap_content"
@@ -78,7 +95,7 @@
         android:id="@+id/ll_me_lb"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:background="@drawable/normal_bar_bg"
+        android:background="@drawable/bg_me_selector"
         android:layout_marginTop="18dp"
         >
         <ImageView
@@ -100,8 +117,8 @@
             android:layout_height="26dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:textSize="18sp"
-            android:textColor="@color/bg_blue_deep"
+            android:textSize="@dimen/normal_textSize"
+            android:textColor="@color/num_yellow"
             android:layout_gravity="center_vertical"
             android:gravity="right"
             android:text="5000"/>
@@ -110,18 +127,24 @@
             android:layout_width="70dp"
             android:layout_height="35dp"
             android:layout_marginRight="10dp"
-            android:textSize="18sp"
+            android:textSize="@dimen/normal_textSize"
             android:textColor="@color/white"
             android:text="充值"
             android:gravity="center"
             android:layout_gravity="center_vertical"
-            android:background="#887412"/>
+            android:background="@color/num_yellow"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/light_white"
+        android:layout_marginLeft="60dp"
+        />
     <LinearLayout
         android:id="@+id/ll_create_time"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:background="@drawable/normal_bar_bg"
+        android:background="@drawable/bg_me_selector"
         >
         <ImageView
             android:layout_width="wrap_content"
@@ -142,7 +165,7 @@
             android:layout_height="26dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:textSize="18sp"
+            android:textSize="@dimen/normal_textSize"
             android:textColor="@color/bg_gray"
             android:layout_gravity="center_vertical"
             android:gravity="right"
@@ -153,7 +176,7 @@
         android:id="@+id/ll_ls_zd"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:background="@drawable/normal_bar_bg"
+        android:background="@drawable/bg_me_selector"
         android:layout_marginTop="14dp">
         <ImageView
             android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 package com.young.leshengbao.utils;
 
+import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
 
@@ -30,12 +31,12 @@ public class CommonUtils {
         return matcher.matches();
     }
 
-    public static String getXml() {
+    public static String getXml(Context context) {
 
         List<GetInfo> listJson = new ArrayList<>();
         GetInfo info = new GetInfo();
-        info.setUserId(YoungApplication.mPreference.getString("userId", ""));
-        info.setUserPwd(YoungApplication.mPreference.getString("userPwd", ""));
+        info.setUserId(SharedPreferencesUtils.getStringValue(context,PreConstants.LSB_USERID, ""));
+        info.setUserPwd(SharedPreferencesUtils.getStringValue(context,PreConstants.LSB_USERPWD, ""));
         listJson.add(info);
         String json = new Gson().toJson(listJson);
         Log.d("Json", "getXml: " + json);

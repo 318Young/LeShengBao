@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class UserInfo implements Serializable{
 
 
-    private float u_xtb;
+    private double u_xtb;
     private String u_createtime;
     private String u_mobile;
     private int safepwd;
@@ -20,11 +20,11 @@ public class UserInfo implements Serializable{
         this.safepwd = safepwd;
     }
 
-    public float getU_xtb() {
+    public double getU_xtb() {
         return u_xtb;
     }
 
-    public void setU_xtb(float u_xtb) {
+    public void setU_xtb(double u_xtb) {
         this.u_xtb = u_xtb;
     }
 

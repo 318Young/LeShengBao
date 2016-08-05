@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -21,6 +22,9 @@ import com.young.leshengbao.options.login.LoginActivity;
 import com.young.leshengbao.options.userinfo.MyMsgActivity;
 import com.young.leshengbao.options.userinfo.UserInfoActivity;
 import com.young.leshengbao.options.userinfo.UserRecordActivity;
+import com.young.leshengbao.utils.DateUtils;
+import com.young.leshengbao.utils.PreConstants;
+import com.young.leshengbao.utils.SharedPreferencesUtils;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -40,7 +44,7 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.e("****",DateUtils.getWeekDayFromDate(2016,8, 1)+"-----");
         try {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
@@ -100,7 +104,9 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         switch (menuItem.getItemId()){
                             case R.id.nav_home:
-                                startActivity(new Intent(MainActivity.this, UserInfoActivity.class));
+                                if (SharedPreferencesUtils.getBooleanValue(MainActivity.this, PreConstants.LSB_ISLOGIN, false)){
+                                    startActivity(new Intent(MainActivity.this, UserInfoActivity.class));
+                                }
                                 break;
                             case R.id.nav_recharge:/*我的消息*/
                                 startActivity(new Intent(MainActivity.this, MyMsgActivity.class));

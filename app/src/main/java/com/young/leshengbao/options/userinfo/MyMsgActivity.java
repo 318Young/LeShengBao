@@ -64,8 +64,8 @@ public class MyMsgActivity extends ParentActivity implements LoginBack {
         try {
             getMsgsAsync = ansyFactory.createAnsyProduct(CommonAsync.class);
             Map<String, Object> map = new HashMap();
-            Log.d("MyMsg---", "getXml: "+CommonUtils.getXml());
-            map.put("xml", CommonUtils.getXml());
+            Log.d("MyMsg---", "getXml: "+CommonUtils.getXml(MyMsgActivity.this));
+            map.put("xml", CommonUtils.getXml(MyMsgActivity.this));
             map.put("pageindex", 0);
             map.put("pagecount", 10);
             getMsgsAsync.setLoginBack(this);

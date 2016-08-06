@@ -1,5 +1,6 @@
 package com.young.leshengbao.options.userinfo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.widget.Toolbar;
@@ -36,7 +37,6 @@ public class UserInfoActivity extends ParentActivity implements LoginBack, View.
 
 
     private AnsyFactory ansyFactory = null;
-
     private CommonAsync loginAsync = null;
     private LinearLayout ll_message;
     private LinearLayout ll_me_lb;
@@ -141,11 +141,9 @@ public class UserInfoActivity extends ParentActivity implements LoginBack, View.
                         String str = nf.format(info.getU_xtb());
                         tv_lb_value.setText(str);
                         tv_time.setText(info.getU_createtime());
-                        ToastUtil.showInfo(this, info.toString());
                     } else if (getString(R.string.getNoReadMsgCount).equals(requestMethod)) {
                         int noReadMsgcount = Integer.valueOf(tryLogin.getMemo());/*未读信息条数*/
                         tv_msg_count.setText(String.valueOf(noReadMsgcount));
-                        ToastUtil.showInfo(this, noReadMsgcount + "");
                     }
                 } else {
                     ToastUtil.showInfo(this, tryLogin.getMemo());
@@ -160,7 +158,7 @@ public class UserInfoActivity extends ParentActivity implements LoginBack, View.
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.ll_message:
-
+                startActivity(new Intent(this, MyMsgActivity.class));
                 break;
             case R.id.ll_me_lb:
 
@@ -172,7 +170,7 @@ public class UserInfoActivity extends ParentActivity implements LoginBack, View.
 
                 break;
             case R.id.ll_ls_zd:
-
+                startActivity(new Intent(this, UserRecordActivity.class));
                 break;
             case R.id.tv_logout:
                 SharedPreferencesUtils.clearAll(UserInfoActivity.this);

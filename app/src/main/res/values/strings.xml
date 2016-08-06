@@ -12,6 +12,7 @@
     <string name="getMyMsg_method">GetAllMsgList</string>
     <string name="getNoReadMsgCount">GetNoReadMsgCount</string>
     <string name="getUserRecord">GetUserRecord</string>
+    <string name="sendMsgRead">ReadMsg</string>
     <!--login and register-->
     <string name="input_wrong_phone_num">请输入正确的手机号</string>
     <string name="bt_login">立即登录</string>

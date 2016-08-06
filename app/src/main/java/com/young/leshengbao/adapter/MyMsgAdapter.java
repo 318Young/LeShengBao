@@ -1,10 +1,14 @@
 package com.young.leshengbao.adapter;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.young.leshengbao.R;
@@ -14,17 +18,18 @@ import com.young.leshengbao.view.YoungApplication;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/8/2.
+ * Created by OnceDaily on 2016/8/2.
  */
 public class MyMsgAdapter extends BaseAdapter {
 
-    private Context context;
     private LayoutInflater inflater;
     private List<MyMsg> datas;
+    private Handler mHandler;
 
-    public MyMsgAdapter(Context context, List<MyMsg> datas) {
+    public MyMsgAdapter(Context context, List<MyMsg> datas, Handler mHandler) {
         inflater = LayoutInflater.from(context);
         this.datas = datas;
+        this.mHandler = mHandler;
     }
 
     @Override
@@ -43,9 +48,9 @@ public class MyMsgAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
-        MyMsg msg = getItem(position);
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        final ViewHolder holder;
+        final MyMsg msg = getItem(position);
         if (null == convertView) {
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.my_msg_item, null);
@@ -53,6 +58,7 @@ public class MyMsgAdapter extends BaseAdapter {
             holder.myMsgIsRead = (TextView) convertView.findViewById(R.id.tv_msg_is_read);
             holder.myMsgCreateTime = (TextView) convertView.findViewById(R.id.tv_msg_create_time);
             holder.myMsgContent = (TextView) convertView.findViewById(R.id.tv_msg_content);
+            holder.myMsgIsShow = (CheckBox) convertView.findViewById(R.id.cb_msg_is_show);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -68,8 +74,23 @@ public class MyMsgAdapter extends BaseAdapter {
                 break;
         }
         holder.myMsgCreateTime.setText(msg.getM_createtime());
-        holder.myMsgContent.setText(msg.getM_content());
 
+        holder.myMsgIsShow.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    holder.myMsgContent.setVisibility(View.VISIBLE);
+                }else {
+                    holder.myMsgContent.setVisibility(View.GONE);
+                }
+                if (msg.getM_isread() == 0){
+                    Message message = new Message();
+                    message.arg1 = position;
+                    mHandler.sendMessage(message);
+                }
+            }
+        });
+        holder.myMsgContent.setText(msg.getM_content());
         return convertView;
     }
 
@@ -78,5 +99,6 @@ public class MyMsgAdapter extends BaseAdapter {
         TextView myMsgIsRead;
         TextView myMsgCreateTime;
         TextView myMsgContent;
+        CheckBox myMsgIsShow;
     }
 }

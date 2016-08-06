@@ -1,6 +1,8 @@
 package com.young.leshengbao.options.userinfo;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.Base64;
 import android.util.Log;
@@ -38,6 +40,8 @@ public class MyMsgActivity extends ParentActivity implements LoginBack {
     private MyMsgAdapter msgAdapter;
     private List<MyMsg> datas;
 
+    private int notifyPosition;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +61,7 @@ public class MyMsgActivity extends ParentActivity implements LoginBack {
 
     @Override
     public void initDates() {
+        toolbar.setTitle("我的消息");
         initMsgs();
     }
 
@@ -64,7 +69,6 @@ public class MyMsgActivity extends ParentActivity implements LoginBack {
         try {
             getMsgsAsync = ansyFactory.createAnsyProduct(CommonAsync.class);
             Map<String, Object> map = new HashMap();
-            Log.d("MyMsg---", "getXml: "+CommonUtils.getXml(MyMsgActivity.this));
             map.put("xml", CommonUtils.getXml(MyMsgActivity.this));
             map.put("pageindex", 0);
             map.put("pagecount", 10);
@@ -78,22 +82,50 @@ public class MyMsgActivity extends ParentActivity implements LoginBack {
             e.printStackTrace();
         }
     }
+    private void sendMsgRead(String msgId) {
+        try {
+            getMsgsAsync = ansyFactory.createAnsyProduct(CommonAsync.class);
+            Map<String, Object> map = new HashMap();
+            map.put("xml", CommonUtils.getXml(MyMsgActivity.this));
+            map.put("id", msgId);
+            getMsgsAsync.setLoginBack(this);
+            getMsgsAsync.setContxt(this);
+            getMsgsAsync.setUrl(getString(R.string.userInfo_url));
+            getMsgsAsync.setRequestMethod(getString(R.string.sendMsgRead));
+            getMsgsAsync.execute(map, null, null);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    Handler mHandler = new  Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            notifyPosition = msg.arg1;
+            sendMsgRead(datas.get(notifyPosition).getM_messageid());
+        }
+    };
 
     @Override
     public void loginSuc(String requestMethod, TryLogin tryLogin) {
         try {
             if (null != tryLogin) {
-                if (getString(R.string.getMyMsg_method).equals(requestMethod)) {
-                    if (1 == tryLogin.getValue()){
+                if (1 == tryLogin.getValue()){
+                    if (getString(R.string.getMyMsg_method).equals(requestMethod)) {
                         String json = new String(Base64.decode(tryLogin.getMemo().getBytes(),Base64.NO_WRAP));
                         JSONArray ja = new JSONArray(json);
                         Gson gson = new Gson();
                         for (int i = 0; i <ja.length() ; i++) {
                             datas.add(gson.fromJson(ja.get(i).toString(),MyMsg.class));
                         }
-                        msgAdapter = new MyMsgAdapter(this,datas);
+                        msgAdapter = new MyMsgAdapter(this,datas,mHandler);
                         lvMyMsg.setAdapter(msgAdapter);
                         Log.e("json",json);
+                    }else if (getString(R.string.sendMsgRead).equals(requestMethod)){
+                        msgAdapter.getItem(notifyPosition).setM_isread(1);
+                        msgAdapter.notifyDataSetChanged();
                     }
                 }
             }

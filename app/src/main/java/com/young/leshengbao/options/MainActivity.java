@@ -118,8 +118,8 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
                                     Toast.makeText(MainActivity.this,"please login", Toast.LENGTH_SHORT).show();
                                 }
                                 break;
-                            case R.id.nav_recharge:/*我的消息*/
-                                startActivity(new Intent(MainActivity.this, MyMsgActivity.class));
+                            case R.id.nav_recharge:/*转账*/
+
                                 break;
                             case R.id.nav_record:/*流水账单*/
                                 startActivity(new Intent(MainActivity.this, UserRecordActivity.class));

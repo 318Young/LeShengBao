@@ -20,6 +20,7 @@ import com.young.leshengbao.R;
 import com.young.leshengbao.adapter.MainPagerAdapter;
 import com.young.leshengbao.fragments.MainFragment;
 import com.young.leshengbao.options.login.LoginActivity;
+import com.young.leshengbao.options.money.TransferMoneyActivity;
 import com.young.leshengbao.options.userinfo.MyMsgActivity;
 import com.young.leshengbao.options.userinfo.UserInfoActivity;
 import com.young.leshengbao.options.userinfo.UserRecordActivity;
@@ -118,8 +119,10 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
                                     Toast.makeText(MainActivity.this,"please login", Toast.LENGTH_SHORT).show();
                                 }
                                 break;
-                            case R.id.nav_recharge:/*转账*/
-
+                            case R.id.nav_recharge:/*充值*/
+                                break;
+                            case R.id.nav_transfer:/*转账*/
+                                startActivity(new Intent(MainActivity.this, TransferMoneyActivity.class));
                                 break;
                             case R.id.nav_record:/*流水账单*/
                                 startActivity(new Intent(MainActivity.this, UserRecordActivity.class));

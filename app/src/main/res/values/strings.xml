@@ -3,6 +3,7 @@
     <string name="name_space">http://tempuri.org/</string>
     <string name="login_url">http://123.207.137.67/Ws/Login.asmx</string>
     <string name="userInfo_url">http://123.207.137.67/Ws/UserInfo.asmx</string>
+    <string name="user_url">http://123.207.137.67/Ws/User.asmx</string>
 
     <!--Request method -->
     <string name="get_yzm_method">SendYzm</string>
@@ -13,6 +14,9 @@
     <string name="getNoReadMsgCount">GetNoReadMsgCount</string>
     <string name="getUserRecord">GetUserRecord</string>
     <string name="sendMsgRead">ReadMsg</string>
+    <string name="getTransferMsgID">Transfer</string>
+    <string name="transferConfirmMethod">TransferComfirm</string>
+
     <!--login and register-->
     <string name="input_wrong_phone_num">请输入正确的手机号</string>
     <string name="bt_login">立即登录</string>
@@ -29,4 +33,10 @@
     <string name="register_pdw_different">两次输入的密码不一致</string>
     <string name="title_activity_user_record">流水账单</string>
     <string name = "mouth">月</string>
+
+    <!--transfer money -->
+    <string name = "transfer_money_other_num">对方账号</string>
+    <string name = "transfer_money_charge">转账金额</string>
+    <string name = "transfer_money_confirm">确定转账</string>
+
 </resources>

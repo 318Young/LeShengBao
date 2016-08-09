@@ -67,6 +67,7 @@ public class MyMsgAdapter extends BaseAdapter {
         switch (msg.getM_isread()) {
             case 1:
                 holder.myMsgIsRead.setText("已读");
+                holder.myMsgIsRead.setTextColor(YoungApplication.getInstance().getResources().getColor((R.color.black)));
                 break;
             case 0:
                 holder.myMsgIsRead.setText("未读");

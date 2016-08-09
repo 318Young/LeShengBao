@@ -23,6 +23,9 @@
         <activity android:name=".options.ShopDetailActivity" />
         <activity android:name=".options.userinfo.UserInfoActivity" />
         <activity android:name=".options.userinfo.MyMsgActivity" />
+        <activity android:name=".options.money.TransferMoneyActivity" />
+        <activity
+            android:name=".options.money.InputSafeNumActivity"/>
         <activity
             android:name=".options.userinfo.UserRecordActivity"
             android:label="@string/title_activity_user_record"

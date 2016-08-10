@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent">
 
@@ -25,7 +24,7 @@
                 android:text="周一"
                 android:layout_margin="@dimen/pad"
                 android:id="@+id/tv_week"
-                android:textSize="@dimen/content_textsize"
+                android:textSize="@dimen/font_size_small"
                 android:layout_alignParentTop="true"
                 />
 
@@ -36,7 +35,7 @@
                 android:text="7-22"
                 android:id="@+id/tv_day"
                 android:layout_below="@+id/tv_week"
-                android:textSize="@dimen/content_textsize"/>
+                android:textSize="@dimen/font_size_small"/>
         </RelativeLayout>
 
         <ImageView
@@ -62,7 +61,7 @@
                 android:text="100"
                 android:layout_margin="@dimen/pad"
                 android:id="@+id/tv_typecn"
-                android:textSize="@dimen/content_textsize"
+                android:textSize="@dimen/font_size_small"
                 android:layout_alignParentTop="true"
                 />
 
@@ -73,7 +72,7 @@
                 android:text="充值100"
                 android:id="@+id/tv_type_info"
                 android:layout_below="@+id/tv_typecn"
-                android:textSize="@dimen/content_textsize"/>
+                android:textSize="@dimen/font_size_small"/>
         </RelativeLayout>
 
     </LinearLayout>

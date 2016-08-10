@@ -4,7 +4,7 @@
         <shape>
             <solid android:color="@color/colorPrimary" />
             <corners
-                android:radius="4dp"/>
+                android:radius="@dimen/button_style_corners_radius"/>
         </shape>
     </item>
     <item

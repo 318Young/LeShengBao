@@ -58,7 +58,7 @@
         <!-- 半透明 -->
         <item name="android:windowNoTitle">true</item>
         <!-- 无标题 -->
-        <item name="android:windowBackground">@color/app_background_color</item>
+        <item name="android:windowBackground">@drawable/round_input_safe_num_layout</item>
         <!-- 背景透明 -->
         <item name="android:backgroundDimEnabled">true</item>
         <!-- 模糊 -->

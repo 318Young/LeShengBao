@@ -66,7 +66,6 @@ public class InputSafeNumActivity extends ParentNoActionBarActivity implements V
         transferTo = (TextView) findViewById(R.id.tv_transfer_to);
         transferCharge = (TextView) findViewById(R.id.tv_transfer_charge);
         safeNum = (EditText) findViewById(R.id.et_safe_num);
-        findViewById(R.id.bt_confirm).setOnClickListener(this);
 
     }
 
@@ -77,14 +76,13 @@ public class InputSafeNumActivity extends ParentNoActionBarActivity implements V
         transferId = intent.getStringExtra("transferId");
         transferTo.setText("向" + intent.getStringExtra("transferNum") + "转账");
         transferCharge.setText( intent.getStringExtra("transferCharge") + "元" );
+
+        findViewById(R.id.iv_back).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.bt_confirm:
-                transferConfirm();
-                break;
             case R.id.iv_back:
                 finish();
                 break;

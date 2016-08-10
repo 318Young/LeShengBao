@@ -2,66 +2,99 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_gray"
     android:gravity="center"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
         android:gravity="right">
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_done"/>
+            android:background="@drawable/input_safe_num_del_selector"/>
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:gravity="center"
         android:orientation="vertical">
-
-<TextView
-    android:id="@+id/tv_transfer_to"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/transfer_money_other_num"/>
-<TextView
-    android:id="@+id/tv_transfer_charge"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textColor="@color/dark_red"
-    android:text="@string/transfer_money_other_num"/>
-        <EditText
-            android:id="@+id/et_safe_num"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@null"
-            android:hint="安全码"
-            android:inputType="number"
-            android:padding="4dp"
-            android:singleLine="true"
-            android:textColorHint="@color/white"
-            android:textSize="14sp" />
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_transfer_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_normal"
+                android:textColor="@color/black"
+                android:text="@string/transfer_money_other_num"/>
+            <TextView
+                android:id="@+id/tv_transfer_charge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_big"
+                android:textSize="@dimen/font_size_normal"
+                android:textColor="@color/money_color"
+                android:text="@string/transfer_money_other_num"/>
+        </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_gray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请输入安全码"
+                android:textColor="@color/gray_dark"
+                android:layout_margin="@dimen/margin_big"
+                android:textSize="@dimen/font_size_small"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="忘记密码"
+                android:layout_margin="@dimen/margin_big"
+                android:textSize="@dimen/font_size_small"
+                android:textColor="@color/app_theme_color"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/et_safe_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:hint="安全码"
+                android:inputType="number"
+                android:padding="@dimen/margin_normal"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/font_size_normal" />
+        </LinearLayout>
     </LinearLayout>
-
-    <Button
-        android:id="@+id/bt_confirm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/transfer_money_confirm" />
-
-
 
 </LinearLayout>

@@ -21,6 +21,7 @@
     <color name="app_theme_color">#00A5E0</color>
     <color name="app_theme_dark_color">#0E98CB</color>
     <color name="money_color">#FF6600</color>
+    <color name="gray_dark">#808080</color>
 
 
     <color name="num_yellow">#FDD100</color>

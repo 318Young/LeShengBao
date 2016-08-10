@@ -81,6 +81,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_button_selector"
+        android:layout_margin="@dimen/transfer_money_button_margin"
+        android:textSize="@dimen/font_size_big"
         android:text="@string/transfer_money_confirm" />
 
 </LinearLayout>

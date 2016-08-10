@@ -16,6 +16,7 @@ import com.young.leshengbao.ansy.ConcreFactory;
 import com.young.leshengbao.inter.LoginBack;
 import com.young.leshengbao.model.TryLogin;
 import com.young.leshengbao.parentclass.ParentActivity;
+import com.young.leshengbao.parentclass.ParentNoActionBarActivity;
 import com.young.leshengbao.utils.CommonUtils;
 import com.young.leshengbao.utils.PreConstants;
 import com.young.leshengbao.utils.SharedPreferencesUtils;
@@ -27,7 +28,7 @@ import java.util.Map;
 /**
  * Created by OnceDaily on 2016/8/9.
  */
-public class InputSafeNumActivity extends ParentActivity implements View.OnClickListener, LoginBack {
+public class InputSafeNumActivity extends ParentNoActionBarActivity implements View.OnClickListener, LoginBack {
 
     private TextView transferTo;
     private TextView transferCharge;
@@ -46,7 +47,7 @@ public class InputSafeNumActivity extends ParentActivity implements View.OnClick
             Display dp = getWindowManager().getDefaultDisplay();
             WindowManager.LayoutParams lp = getWindow().getAttributes();
             lp.gravity = Gravity.CENTER;
-            lp.width = (int) (dp.getWidth() * 0.6);
+            lp.width = (int) (dp.getWidth() * 0.8);
             lp.height = (int) (dp.getHeight() * 0.4);
             getWindow().setAttributes(lp);
         } catch (Exception e) {

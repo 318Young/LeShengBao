@@ -25,7 +25,8 @@
         <activity android:name=".options.userinfo.MyMsgActivity" />
         <activity android:name=".options.money.TransferMoneyActivity" />
         <activity
-            android:name=".options.money.InputSafeNumActivity"/>
+            android:name=".options.money.InputSafeNumActivity"
+            android:theme="@style/transfer_money_input_safe_num_style"/>
         <activity
             android:name=".options.userinfo.UserRecordActivity"
             android:label="@string/title_activity_user_record"

@@ -6,10 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.young.leshengbao.R;
 import com.young.leshengbao.model.UserRecord;
+import com.young.leshengbao.utils.DateUtils;
 
 import java.util.List;
 
@@ -24,9 +26,9 @@ public class UserRecordAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
 
-    private String mouth = "*月" ;
+    private String lastmouth = "*月" ;
 
-    private String createtime ;
+    private String currentMouth ;
 
     public UserRecordAdapter(Context cx){
         this.cx = cx ;
@@ -56,18 +58,29 @@ public class UserRecordAdapter extends BaseAdapter {
         return position;
     }
 
-    @Override
-    public int getViewTypeCount() {
-        return 2;
-    }
+//    @Override
+//    public int getViewTypeCount() {
+//        return 2;
+//    }
+//
+//    @Override
+//    public int getItemViewType(int position) {
+//        int result = 0 ;
+//        if(mouth.equals(createtime))
+//            result = 0;
+//        else
+//            result = 1 ;
+//
+//        return result;
+//    }
 
-    @Override
-    public int getItemViewType(int position) {
-        int result = 0 ;
-        if(mouth.equals(createtime))
+    public int getItemType(String lastMouth, String currentMouth) {
+
+        int result = 0;
+        if (lastMouth.equals(currentMouth))
             result = 0;
         else
-            result = 1 ;
+            result = 1;
 
         return result;
     }
@@ -77,97 +90,117 @@ public class UserRecordAdapter extends BaseAdapter {
         ViewHolder1 viewHolder1 = null ;
         ViewHolder2 viewHolder2 = null ;
 
-        String mouth = "" ,mouth_day , time ;
+        String mouth_day , time ;
+        String[] year_mouth_day ;
         try {
             UserRecord userRecord = (UserRecord)getItem(position);
-            createtime = userRecord.getCreatetime().split("-")[1];
-            int type = getItemViewType(position);
+
+            currentMouth = userRecord.getCreatetime().split("-")[1];
+
+            if(position > 0)
+                lastmouth = ((UserRecord)getItem(position-1)).getCreatetime().split("-")[1];
+            else
+                lastmouth = "**" ;
+
+            int type = getItemType(lastmouth , currentMouth);
+
             System.out.println("type:"+type);
-            this.mouth = this.createtime ;
+
             if(convertView == null){
-                switch(type){
-                    case 1:
-                        convertView = inflater.inflate(R.layout.user_record_item_one,parent , false);
-                        viewHolder1 = new ViewHolder1();
-                        viewHolder1.tv_mouth = (TextView)convertView.findViewById(R.id.tv_mouth);
+//                switch(type){
+//                    case 1:
+//                        convertView = inflater.inflate(R.layout.user_record_item_one,parent , false);
+//                        viewHolder1 = new ViewHolder1();
+//                        viewHolder1.tv_mouth = (TextView)convertView.findViewById(R.id.tv_mouth);
+//
+//                        viewHolder1.header = (ImageView)convertView.findViewById(R.id.header);
+//
+//                        viewHolder1.tv_day = (TextView)convertView.findViewById(R.id.tv_day);
+//                        viewHolder1.tv_week = (TextView)convertView.findViewById(R.id.tv_week);
+//
+//                        viewHolder1.tv_typecn = (TextView)convertView.findViewById(R.id.tv_typecn);
+//                        viewHolder1.tv_type_info = (TextView)convertView.findViewById(R.id.tv_type_info);
+//
+//                        convertView.setTag(viewHolder1);
+//
+//                        break;
+//                    case 0:
+//                        convertView = inflater.inflate(R.layout.user_record_item_two,parent , false);
+//
+//                        viewHolder2 = new ViewHolder2();
+//
+//                        viewHolder2.header = (ImageView)convertView.findViewById(R.id.header);
+//
+//                        viewHolder2.tv_day = (TextView)convertView.findViewById(R.id.tv_day);
+//                        viewHolder2.tv_week = (TextView)convertView.findViewById(R.id.tv_week);
+//
+//                        viewHolder2.tv_typecn = (TextView)convertView.findViewById(R.id.tv_typecn);
+//                        viewHolder2.tv_type_info = (TextView)convertView.findViewById(R.id.tv_type_info);
+//
+//                        convertView.setTag(viewHolder2);
+//
+//                        break;
+//                }
+                convertView = inflater.inflate(R.layout.user_record_item_one,parent , false);
+                viewHolder1 = new ViewHolder1();
 
-                        viewHolder1.header = (ImageView)convertView.findViewById(R.id.header);
+                viewHolder1.head = (LinearLayout)convertView.findViewById(R.id.head);
 
-                        viewHolder1.tv_day = (TextView)convertView.findViewById(R.id.tv_day);
-                        viewHolder1.tv_week = (TextView)convertView.findViewById(R.id.tv_week);
+                if(type == 0)
+                    viewHolder1.head.setVisibility(View.GONE);
 
-                        viewHolder1.tv_typecn = (TextView)convertView.findViewById(R.id.tv_typecn);
-                        viewHolder1.tv_type_info = (TextView)convertView.findViewById(R.id.tv_type_info);
+                viewHolder1.tv_mouth = (TextView)convertView.findViewById(R.id.tv_mouth);
 
-                        convertView.setTag(viewHolder1);
+                viewHolder1.header = (ImageView)convertView.findViewById(R.id.header);
 
-                        break;
-                    case 0:
-                        convertView = inflater.inflate(R.layout.user_record_item_two,parent , false);
+                viewHolder1.tv_day = (TextView)convertView.findViewById(R.id.tv_day);
+                viewHolder1.tv_week = (TextView)convertView.findViewById(R.id.tv_week);
 
-                        viewHolder2 = new ViewHolder2();
+                viewHolder1.tv_typecn = (TextView)convertView.findViewById(R.id.tv_typecn);
+                viewHolder1.tv_type_info = (TextView)convertView.findViewById(R.id.tv_type_info);
 
-                        viewHolder2.header = (ImageView)convertView.findViewById(R.id.header);
+                convertView.setTag(viewHolder1);
 
-                        viewHolder2.tv_day = (TextView)convertView.findViewById(R.id.tv_day);
-                        viewHolder2.tv_week = (TextView)convertView.findViewById(R.id.tv_week);
-
-                        viewHolder2.tv_typecn = (TextView)convertView.findViewById(R.id.tv_typecn);
-                        viewHolder2.tv_type_info = (TextView)convertView.findViewById(R.id.tv_type_info);
-
-                        convertView.setTag(viewHolder2);
-
-                        break;
-                }
             }else{
                 switch(type){
                     case 1:
                         viewHolder1 = (ViewHolder1)convertView.getTag();
+                        viewHolder1.head.setVisibility(View.VISIBLE);
                         break;
                     case 0:
-                        viewHolder2 = (ViewHolder2)convertView.getTag();
+                        viewHolder1 = (ViewHolder1)convertView.getTag();
+                        viewHolder1.head.setVisibility(View.GONE);
                         break;
                 }
             }
         /*设置资源*/
             switch(type){
                 case 1:
-                    mouth = userRecord.getCreatetime().substring(5,7) ;
+                    currentMouth = userRecord.getCreatetime().substring(5,7) ;
                     mouth_day= userRecord.getCreatetime().substring(5,10) ;
                     time = userRecord.getCreatetime_d().substring(11,19);
-                    if(mouth.startsWith("0"))
-                        viewHolder1.tv_mouth.setText(mouth.substring(1, 2)+cx.getString(R.string.mouth));
+                    year_mouth_day = userRecord.getCreatetime().split("-");
+                    if(currentMouth.startsWith("0"))
+                        viewHolder1.tv_mouth.setText(currentMouth.substring(1, 2)+cx.getString(R.string.mouth));
                     else
-                        viewHolder1.tv_mouth.setText(mouth+cx.getString(R.string.mouth));
+                        viewHolder1.tv_mouth.setText(currentMouth+cx.getString(R.string.mouth));
 
                     viewHolder1.tv_day.setText(mouth_day);
-                    viewHolder1.tv_week.setText(time);
-                    if("1".equals(userRecord.getFlag())){
-                        viewHolder1.tv_typecn.setText(userRecord.getXtb());
-                        viewHolder1.tv_type_info.setText("充值"+userRecord.getXtb());
-                    }
+                    viewHolder1.tv_week.setText(DateUtils.getWeekDayFromDate(Integer.valueOf(year_mouth_day[0]),Integer.valueOf(year_mouth_day[1]),Integer.valueOf(year_mouth_day[2])));
 
-                    else if("2".equals(userRecord.getFlag())){
-                        viewHolder1.tv_typecn.setText("-"+userRecord.getXtb());
-                        viewHolder1.tv_type_info.setText("消费"+userRecord.getXtb());
-                    }
-
+                    viewHolder1.tv_typecn.setText(String.valueOf(userRecord.getXtb()));
+                    viewHolder1.tv_type_info.setText(userRecord.getTypeCN()+userRecord.getXtb());
 
                     break;
                 case 0:
                     mouth_day = userRecord.getCreatetime().substring(5,10) ;
                     time = userRecord.getCreatetime_d().substring(11,19);
+                    year_mouth_day = userRecord.getCreatetime().split("-");
+                    viewHolder1.tv_day.setText(mouth_day);
+                    viewHolder1.tv_week.setText(DateUtils.getWeekDayFromDate(Integer.valueOf(year_mouth_day[0]),Integer.valueOf(year_mouth_day[1]),Integer.valueOf(year_mouth_day[2])));
 
-                    viewHolder2.tv_day.setText(mouth_day);
-                    viewHolder2.tv_week.setText(time);
-
-                    if("1".equals(userRecord.getFlag())){
-                        viewHolder2.tv_typecn.setText(userRecord.getXtb());
-                        viewHolder2.tv_type_info.setText("充值"+userRecord.getXtb());
-                    }else if("2".equals(userRecord.getFlag())){
-                        viewHolder2.tv_typecn.setText("-"+userRecord.getXtb());
-                        viewHolder2.tv_type_info.setText("消费"+userRecord.getXtb());
-                    }
+                    viewHolder1.tv_typecn.setText(String.valueOf(userRecord.getXtb()));
+                    viewHolder1.tv_type_info.setText(userRecord.getTypeCN()+userRecord.getXtb());
 
                     break;
             }
@@ -180,6 +213,7 @@ public class UserRecordAdapter extends BaseAdapter {
      class ViewHolder1 {
          TextView  tv_mouth , tv_week , tv_day , tv_typecn , tv_type_info ;
          ImageView header ;
+         LinearLayout head ;
      }
 
     class ViewHolder2 {

@@ -18,14 +18,14 @@ public class DateUtils {
      * @param day
      * @return
      */
-    public static int getWeekDayFromDate(int year, int month, int day) {
+    public static String getWeekDayFromDate(int year, int month, int day) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(getDateFromString(year, month, day));
         int week_index = cal.get(Calendar.DAY_OF_WEEK) - 1;
         if (week_index < 0) {
             week_index = 0;
         }
-        return week_index;
+        return weekName[week_index];
     }
 
     public static Date getDateFromString(int year, int month, int day) {

@@ -21,6 +21,7 @@ import com.young.leshengbao.adapter.MainPagerAdapter;
 import com.young.leshengbao.fragments.MainFragment;
 import com.young.leshengbao.options.login.LoginActivity;
 import com.young.leshengbao.options.money.TransferMoneyActivity;
+import com.young.leshengbao.options.setting.SafeSettingActivity;
 import com.young.leshengbao.options.userinfo.MyMsgActivity;
 import com.young.leshengbao.options.userinfo.UserInfoActivity;
 import com.young.leshengbao.options.userinfo.UserRecordActivity;
@@ -124,8 +125,11 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
                             case R.id.nav_transfer:/*转账*/
                                 startActivity(new Intent(MainActivity.this, TransferMoneyActivity.class));
                                 break;
-                            case R.id.nav_record:/*流水账单*/
-                                startActivity(new Intent(MainActivity.this, UserRecordActivity.class));
+                            case R.id.nav_record:/*记录*/
+//                                startActivity(new Intent(MainActivity.this, UserRecordActivity.class));
+                                break;
+                            case R.id.sub_setting:/*安全设置*/
+                                startActivity(new Intent(MainActivity.this, SafeSettingActivity.class));
                                 break;
                         }
                         menuItem.setChecked(true);

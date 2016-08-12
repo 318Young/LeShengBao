@@ -10,7 +10,7 @@
     <dimen name="user_record_item_head">40dp</dimen>
     <dimen name="user_record_item_content">70dp</dimen>
     <dimen name="user_record_item_width">85dp</dimen>
-    <dimen name = "dividerHeight">3dp</dimen>
+    <dimen name="dividerHeight">3dp</dimen>
     <dimen name="header_width">40dp</dimen>
     <dimen name="pad">5dp</dimen>
     <dimen name="font_size_big">18sp</dimen>

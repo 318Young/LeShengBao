@@ -69,7 +69,7 @@
             android:layout_marginTop="10dp"
             android:background="@null"
             android:hint="@string/transfer_money_charge"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:padding="4dp"
             android:singleLine="true"
             android:textColorHint="@color/bg_gray"
@@ -82,6 +82,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_button_selector"
         android:layout_margin="@dimen/transfer_money_button_margin"
+        android:enabled="false"
         android:textSize="@dimen/font_size_big"
         android:text="@string/transfer_money_confirm" />
 

@@ -83,7 +83,6 @@ public class RegisterActivity extends ParentActivity implements View.OnClickList
                     return;
                 }
                 getYzm();
-
                 break;
 
             case R.id.bt_register:
@@ -159,7 +158,7 @@ public class RegisterActivity extends ParentActivity implements View.OnClickList
         if (null != tryLogin) {
             if (getString(R.string.get_yzm_method).equals(requestMethod)) {
                 if (1 == tryLogin.getValue()) {
-                    btGetYzm.setClickable(false);
+                    btGetYzm.setEnabled(false);
                     new MyCount(120000, 1000).start();
                 }
                 ToastUtil.showInfo(this, tryLogin.getMemo());
@@ -186,7 +185,7 @@ public class RegisterActivity extends ParentActivity implements View.OnClickList
         @Override
         public void onFinish() {
             btGetYzm.setText(getString(R.string.bt_get_yzm));
-            btGetYzm.setClickable(true);
+            btGetYzm.setEnabled(true);
         }
 
         @Override

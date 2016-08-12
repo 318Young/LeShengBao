@@ -2,99 +2,213 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:background="@android:color/transparent"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_normal"
-        android:gravity="right">
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/input_safe_num_del_selector"/>
-    </LinearLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/round_input_safe_num_layout">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_normal"
+            android:gravity="right">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_safe_num_del_selector" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_transfer_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/transfer_money_other_num"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_size_normal" />
+
+                <TextView
+                    android:id="@+id/tv_transfer_charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_big"
+                    android:text="@string/transfer_money_other_num"
+                    android:textColor="@color/money_color"
+                    android:textSize="@dimen/font_size_normal" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/bg_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_big"
+                    android:text="请输入安全码"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/font_size_small" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_big"
+                    android:text="忘记密码"
+                    android:textColor="@color/app_theme_color"
+                    android:textSize="@dimen/font_size_small" />
+            </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/ll_keyboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_big"
+                    android:clickable="true"
+                    android:background="@drawable/round_login_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/num_1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:clickable="false"
+                        android:inputType="numberPassword"
+                        android:textColor="@color/black"
+                        android:textSize="38sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/bg_gray" />
+
+                    <TextView
+                        android:id="@+id/num_2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:clickable="false"
+                        android:inputType="numberPassword"
+                        android:textColor="@color/black"
+                        android:textSize="38sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/bg_gray" />
+
+                    <TextView
+                        android:id="@+id/num_3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:inputType="numberPassword"
+                        android:textColor="@color/black"
+                        android:textSize="38sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/bg_gray" />
+
+                    <TextView
+                        android:id="@+id/num_4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:inputType="numberPassword"
+                        android:textColor="@color/black"
+                        android:textSize="38sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/bg_gray" />
+
+                    <TextView
+                        android:id="@+id/num_5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:inputType="numberPassword"
+                        android:textColor="@color/black"
+                        android:textSize="38sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/bg_gray" />
+
+                    <TextView
+                        android:id="@+id/num_6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:inputType="numberPassword"
+                        android:textColor="@color/black"
+                        android:textSize="38sp" />
+                </LinearLayout>
+        </LinearLayout>
+</LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:visibility="gone"
         android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_transfer_to"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/font_size_normal"
-                android:textColor="@color/black"
-                android:text="@string/transfer_money_other_num"/>
-            <TextView
-                android:id="@+id/tv_transfer_charge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_big"
-                android:textSize="@dimen/font_size_normal"
-                android:textColor="@color/money_color"
-                android:text="@string/transfer_money_other_num"/>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/bg_gray"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="请输入安全码"
-                android:textColor="@color/gray_dark"
-                android:layout_margin="@dimen/margin_big"
-                android:textSize="@dimen/font_size_small"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="忘记密码"
-                android:layout_margin="@dimen/margin_big"
-                android:textSize="@dimen/font_size_small"
-                android:textColor="@color/app_theme_color"/>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <EditText
-                android:id="@+id/et_safe_num"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@null"
-                android:hint="安全码"
-                android:inputType="number"
-                android:padding="@dimen/margin_normal"
-                android:singleLine="true"
-                android:textColorHint="@color/white"
-                android:textSize="@dimen/font_size_normal" />
-        </LinearLayout>
     </LinearLayout>
+        <GridView
+            android:id="@+id/gv_keyboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_gray"
+            android:verticalSpacing="1dp"
+            android:horizontalSpacing="1dp"
+            android:numColumns="3"/>
+
 
 </LinearLayout>

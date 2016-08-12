@@ -3,7 +3,11 @@ package com.young.leshengbao.options.money;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.young.leshengbao.R;
@@ -30,6 +34,8 @@ public class TransferMoneyActivity extends ParentActivity implements View.OnClic
     private EditText charge;
     private ConcreFactory concreFactory;
     private CommonAsync transferAsync;
+
+    private Button transferConfirm;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,13 +53,55 @@ public class TransferMoneyActivity extends ParentActivity implements View.OnClic
         otherNum = (EditText) findViewById(R.id.et_other_num);
         charge = (EditText) findViewById(R.id.et_charge);
 
-        findViewById(R.id.bt_confirm).setOnClickListener(this);
+        transferConfirm = (Button) findViewById(R.id.bt_confirm);
+        transferConfirm.setOnClickListener(this);
 
     }
 
     @Override
     public void initDates() {
         concreFactory = new ConcreFactory();
+
+        otherNum.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!TextUtils.isEmpty(charge.getText().toString()) && !TextUtils.isEmpty(s.toString())){
+                    transferConfirm.setEnabled(true);
+                }else {
+                    transferConfirm.setEnabled(false);
+                }
+            }
+        });
+        charge.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!TextUtils.isEmpty(otherNum.getText().toString()) && !TextUtils.isEmpty(s.toString())){
+                    transferConfirm.setEnabled(true);
+                }else {
+                    transferConfirm.setEnabled(false);
+                }
+            }
+        });
     }
 
     @Override

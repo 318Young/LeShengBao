@@ -29,6 +29,7 @@
     <color name="bg_white">#FFFFFF</color>
     <color name="bg_gray">#C5C9CC</color>
     <color name="bg_light_gray">#EBEBEB</color>
+    <color name="transparent_light">#05000000</color>
 
     <color name="font_gray">#A6AFC6</color>
     <color name="font_blue_deep">#242A38</color>

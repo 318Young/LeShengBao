@@ -1,6 +1,6 @@
 package com.young.leshengbao.options.setting;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class SafeSettingActivity extends ParentActivity implements View.OnClickListener, LoginBack {
 
-    private EditText  et_yzm ,et_safe_num , et_again_new_safe_password;
+    private EditText  et_yzm ,et_safe_num , et_again_new_safe_password , et_old_safe_num;
 
     private Button  bt_confirm;
 
@@ -39,6 +39,8 @@ public class SafeSettingActivity extends ParentActivity implements View.OnClickL
     private  ConcreFactory   ansyFactory = null;
 
     private CommonAsync loginAsync = null;
+
+    private Intent intent = null ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,14 @@ public class SafeSettingActivity extends ParentActivity implements View.OnClickL
 
         image_yzm = (ImageView) findViewById(R.id.image_get_yzm);
 
+        et_old_safe_num = (EditText)findViewById(R.id.et_old_safe_num);
+
+        intent = getIntent();
+        String flag  =  intent.getStringExtra("flag");
+        if(TextUtils.isEmpty(flag) || "setting".equals(flag))
+            et_old_safe_num.setVisibility(View.GONE);
+        else if(!TextUtils.isEmpty(flag) && "update".equals(flag))
+            et_old_safe_num.setVisibility(View.VISIBLE);
     }
 
     public void setListenser(){
@@ -82,15 +92,24 @@ public class SafeSettingActivity extends ParentActivity implements View.OnClickL
                 if(TextUtils.isEmpty(et_safe_num.getText().toString())){
                     ToastUtil.showInfo(this,"请输入安全码");
                     return ;
-                }else if(!et_safe_num.getText().toString().equals(et_again_new_safe_password.getText().toString())){
+                }else if(et_safe_num.getText().toString().length() < 6 || et_safe_num.getText().toString().length() >6 ){
+                    ToastUtil.showInfo(this,"请输入6位数安全码");
+                    return ;
+                }else if(TextUtils.isEmpty(et_again_new_safe_password.getText().toString()) ){
+                    ToastUtil.showInfo(this,"请再次输入安全码");
+                    return ;
+                }  else if(!et_safe_num.getText().toString().equals(et_again_new_safe_password.getText().toString())){
                     ToastUtil.showInfo(this,"俩次输入的安全码不一致，请重新输入");
+                    return ;
+                }else if(TextUtils.isEmpty(et_yzm.getText().toString())){
+                    ToastUtil.showInfo(this,"请输入验证码");
                     return ;
                 }else if(!et_yzm.getText().toString().equals(code.getInstance().getCode().toString().trim())){
                     ToastUtil.showInfo(this,"code："+code.getInstance().getCode().toString().trim());
                     ToastUtil.showInfo(this,"验证码不正确");
                     return ;
                 }else{
-                    ChangeSafePwd();
+                    setSafePwd();
                 }
 
                 break;
@@ -100,12 +119,12 @@ public class SafeSettingActivity extends ParentActivity implements View.OnClickL
 
         }
 }
-    public void ChangeSafePwd() {
+    public void setSafePwd() {
         try {
             ansyFactory = new ConcreFactory();
             loginAsync = ansyFactory.createAnsyProduct(CommonAsync.class);
             params.put("xml", CommonUtils.getXml(this));
-            params.put("oldpwd" ,"");
+            params.put("oldpwd" ,et_old_safe_num.getText().toString());
             params.put("newpwd" ,et_safe_num.getText().toString());
             loginAsync.setLoginBack(this);
             loginAsync.setContxt(this);

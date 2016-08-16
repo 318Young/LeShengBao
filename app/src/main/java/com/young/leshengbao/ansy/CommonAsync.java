@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import com.young.leshengbao.R;
 import com.young.leshengbao.inter.LoginBack;
 import com.young.leshengbao.model.TryLogin;
+import com.young.leshengbao.options.customviews.CustomProgressDialog;
 import com.young.leshengbao.service.WebServiceOpforBt;
 
 import org.ksoap2.serialization.SoapObject;
@@ -35,6 +36,12 @@ public class CommonAsync extends AsyncTask<Map<String, Object>, Integer, TryLogi
 
     private String requsetMethod = "";
 
+    private String message = "正在加载中";
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public Context getContxt() {
         return contxt;
     }
@@ -51,10 +58,12 @@ public class CommonAsync extends AsyncTask<Map<String, Object>, Integer, TryLogi
         this.requsetMethod = requestMethod;
     }
 
-
+    private CustomProgressDialog customProgressDialog = null ;
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        customProgressDialog = new CustomProgressDialog(contxt ,  message ,R.anim.frame);
+        customProgressDialog.show();
     }
 
     @Override
@@ -93,5 +102,7 @@ public class CommonAsync extends AsyncTask<Map<String, Object>, Integer, TryLogi
     protected void onPostExecute(TryLogin tryLogin) {
         super.onPostExecute(tryLogin);
         loginBack.loginSuc(requsetMethod, tryLogin);
+        if(customProgressDialog != null)
+            customProgressDialog.dismiss();
     }
 }

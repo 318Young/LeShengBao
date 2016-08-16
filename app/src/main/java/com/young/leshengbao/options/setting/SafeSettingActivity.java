@@ -46,7 +46,7 @@ public class SafeSettingActivity extends ParentActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setListenser();
+
     }
 
     @Override
@@ -83,7 +83,9 @@ public class SafeSettingActivity extends ParentActivity implements View.OnClickL
     }
     @Override
     public void initDates() {
-        image_yzm.setImageBitmap(code.getInstance().createBitmap());
+        image_yzm.setImageBitmap(code.getInstance().createBitmap()
+        );
+        setListenser();
     }
 
     @Override

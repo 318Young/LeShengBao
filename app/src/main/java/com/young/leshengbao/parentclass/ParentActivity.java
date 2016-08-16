@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.young.leshengbao.R;
+import com.young.leshengbao.utils.ToastUtil;
+import com.young.leshengbao.view.YoungApplication;
 
 /**
  * Created by Administrator on 2016/7/23.
@@ -26,13 +28,19 @@ public abstract class ParentActivity extends AppCompatActivity {
             Log.e(TAG, "add layout");
         }
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        initViews();
-        initDates();
         if (null != toolbar){
             toolbar.setTitleTextColor(getResources().getColor(R.color.white));
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        if(!YoungApplication.loginStatic) {
+            ToastUtil.showInfo(this, "请先登录账号");
+            return ;
+        }
+        initViews();
+        initDates();
+
     }
 
     /**

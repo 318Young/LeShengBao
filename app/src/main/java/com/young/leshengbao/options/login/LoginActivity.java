@@ -117,6 +117,7 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
                 ToastUtil.showInfo(this, memo);
             } else {
                 ToastUtil.showInfo(this, "login success");
+                YoungApplication.loginStatic = true ;
                 SharedPreferencesUtils.setStringValue(LoginActivity.this, PreConstants.LSB_USERID, memo.split(",")[0]);
                 SharedPreferencesUtils.setStringValue(LoginActivity.this, PreConstants.LSB_USERPWD, CommonUtils.getMD5(etPassword.getText()+memo.split(",")[1]));
                 SharedPreferencesUtils.setStringValue(LoginActivity.this, PreConstants.LSB_USERPHONE, etUsername.getText().toString());

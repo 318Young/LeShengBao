@@ -9,6 +9,9 @@ import android.content.SharedPreferences;
 public class YoungApplication  extends Application{
 
     public static YoungApplication instance = null ;
+
+    public static boolean loginStatic = false ; /*false 未登录 true  登录成功*/
+
     @Override
     public void onCreate() {
         super.onCreate();

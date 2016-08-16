@@ -42,6 +42,7 @@ public class SafeSettingActivity extends ParentActivity implements View.OnClickL
 
     private Intent intent = null ;
 
+    private  String flag ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +70,7 @@ public class SafeSettingActivity extends ParentActivity implements View.OnClickL
         et_old_safe_num = (EditText)findViewById(R.id.et_old_safe_num);
 
         intent = getIntent();
-        String flag  =  intent.getStringExtra("flag");
+        flag =  intent.getStringExtra("flag");
         if(TextUtils.isEmpty(flag) || "setting".equals(flag))
             et_old_safe_num.setVisibility(View.GONE);
         else if(!TextUtils.isEmpty(flag) && "update".equals(flag))
@@ -89,7 +90,13 @@ public class SafeSettingActivity extends ParentActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.bt_confirm:/*确定*/
-                if(TextUtils.isEmpty(et_safe_num.getText().toString())){
+
+                if(!TextUtils.isEmpty(flag) && "update".equals(flag)){
+                    if(TextUtils.isEmpty(et_old_safe_num.getText().toString())){
+                        ToastUtil.showInfo(this,"请输入旧安全码");
+                        return ;
+                    }
+                }else if(TextUtils.isEmpty(et_safe_num.getText().toString())){
                     ToastUtil.showInfo(this,"请输入安全码");
                     return ;
                 }else if(et_safe_num.getText().toString().length() < 6 || et_safe_num.getText().toString().length() >6 ){

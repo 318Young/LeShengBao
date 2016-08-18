@@ -14,6 +14,7 @@
     <string name="getNoReadMsgCount">GetNoReadMsgCount</string>
     <string name="ChangeSafePwd">ChangeSafePwd</string>
     <string name="getUserRecord">GetUserRecord</string>
+    <string name="getAccountRecord">GetAccountRecord</string>
     <string name="sendMsgRead">ReadMsg</string>
     <string name="getTransferMsgID">Transfer</string>
     <string name="transferConfirmMethod">TransferComfirm</string>

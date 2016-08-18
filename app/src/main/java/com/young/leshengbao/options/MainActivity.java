@@ -69,8 +69,8 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
             if (viewPager != null) {
                 setupViewPager(viewPager);
             }
-            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-            tabLayout.setupWithViewPager(viewPager);
+//            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+//            tabLayout.setupWithViewPager(viewPager);
 
 
             iv_header.setOnClickListener(this);
@@ -102,7 +102,7 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
     private void setupViewPager(ViewPager viewPager) {
         MainPagerAdapter adapter = new MainPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new MainFragment(), "Category 1");
-        adapter.addFragment(new MainFragment(), "Category 2");
+//        adapter.addFragment(new MainFragment(), "Category 2");
 //        adapter.addFragment(new MainFragment(), "Category 3");
         viewPager.setAdapter(adapter);
     }

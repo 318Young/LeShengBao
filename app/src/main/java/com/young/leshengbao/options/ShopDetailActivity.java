@@ -36,6 +36,7 @@ public class ShopDetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_NAME = "shop_name";
     public static final String EXTRA_IMAGE = "shop_image";
+    public static final String EXTRA_CODE = "shop_url";
     private WebView mWebView;
     private WebSettings mWebSetting;
     @Override
@@ -48,7 +49,7 @@ public class ShopDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final String shopName = intent.getStringExtra(EXTRA_NAME);
         final String shopImage = intent.getStringExtra(EXTRA_IMAGE);
-
+        final String shopUrl = intent.getStringExtra(EXTRA_CODE);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -65,7 +66,7 @@ public class ShopDetailActivity extends AppCompatActivity {
 
         //设置支持javascript
         mWebSetting.setJavaScriptEnabled(true);
-        mWebView.loadUrl("http://blog.csdn.net/lightyearwp/article/details/5419973");
+        mWebView.loadUrl(shopUrl);//"http://blog.csdn.net/lightyearwp/article/details/5419973"
         mWebView.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url)
             { //  重写此方法表明点击网页里面的链接还是在当前的webview里跳转，不跳到浏览器那边

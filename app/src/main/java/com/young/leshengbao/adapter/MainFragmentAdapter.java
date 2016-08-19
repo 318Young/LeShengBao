@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,19 +19,24 @@ import com.young.leshengbao.model.MyMsg;
 import com.young.leshengbao.model.ShopModel;
 import com.young.leshengbao.options.ShopDetailActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by chenhe on 2016/8/17.
  */
-public class MainFragmentAdapter extends BaseAdapter {
+public class MainFragmentAdapter extends BaseAdapter implements Filterable {
     private LayoutInflater inflater;
     private List<ShopModel> dataList;
+    private MyFilter myFilter;
+    private boolean notiyfyByFilter;
     private Context context;
+    List<ShopModel> copyUserList;
     public MainFragmentAdapter(Context context, List<ShopModel> dataList){
         inflater = LayoutInflater.from(context);
         this.context = context;
         this.dataList = dataList;
+        copyUserList = dataList ;
     }
     @Override
     public int getCount() {
@@ -67,7 +74,7 @@ public class MainFragmentAdapter extends BaseAdapter {
                 Intent intent = new Intent(context, ShopDetailActivity.class);
                 intent.putExtra(ShopDetailActivity.EXTRA_NAME, dataList.get(i).getA_name());
                 intent.putExtra(ShopDetailActivity.EXTRA_IMAGE, "http://123.207.137.67" + dataList.get(i).getA_img());
-
+                intent.putExtra(ShopDetailActivity.EXTRA_CODE,  "http://123.207.137.67/Account.aspx?code=" +dataList.get(i).getA_accountid());
                 context.startActivity(intent);
             }
         });
@@ -80,10 +87,89 @@ public class MainFragmentAdapter extends BaseAdapter {
                 .into(holder.iv_avatar);
         return convertView;
     }
+
+    @Override
+    public Filter getFilter() {
+        if (myFilter == null) {
+            myFilter = new MyFilter(this.dataList);
+        }
+        return myFilter;
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+//        if (!notiyfyByFilter) {
+//            dataList.clear();
+//            copyUserList.addAll(this.dataList);
+//        }
+    }
+
     public static class ViewHolder {
         public RelativeLayout rl_content;
         public  ImageView iv_avatar;
         public  TextView tv_name;
         public  TextView tv_description;
+    }
+
+    private class MyFilter extends  Filter {
+        List<ShopModel> mOriginalList = null;
+
+        public MyFilter(List<ShopModel> myList) {
+            this.mOriginalList = myList;
+        }
+
+        @Override
+        protected synchronized FilterResults performFiltering(CharSequence prefix) {
+            Filter.FilterResults results = new FilterResults();
+            if (mOriginalList == null) {
+                mOriginalList = new ArrayList<ShopModel>();
+            }
+            if (prefix == null || prefix.length() == 0) {
+                results.values = copyUserList;
+                results.count = copyUserList.size();
+            } else {
+                String prefixString = prefix.toString();
+                final int count = mOriginalList.size();
+                final ArrayList<ShopModel> newValues = new ArrayList<ShopModel>();
+                for (int i = 0; i < count; i++) {
+                    final ShopModel contact = mOriginalList.get(i);
+                    String name = contact.getA_name();
+
+                    if (name.contains(prefixString)) {
+                        newValues.add(contact);
+                    } else {
+                        final String[] words = name.split(" ");
+                        final int wordCount = words.length;
+
+                        // Start at index 0, in case valueText starts with
+                        // space(s)
+                        for (int k = 0; k < wordCount; k++) {
+                            if (words[k].startsWith(prefixString)) {
+                                newValues.add(contact);
+                                break;
+                            }
+                        }
+                    }
+                }
+                results.values = newValues;
+                results.count = newValues.size();
+            }
+            return results;
+        }
+
+        @Override
+        protected synchronized void publishResults(CharSequence constraint, FilterResults results) {
+//            MainFragmentAdapter.this.dataList.clear();
+            MainFragmentAdapter.this.dataList = (List<ShopModel>) results.values;
+            MainFragmentAdapter.this.notifyDataSetChanged();
+//            if (results.count > 0) {
+//                notiyfyByFilter = true;
+//                notifyDataSetChanged();
+//                notiyfyByFilter = false;
+//            } else {
+//                notifyDataSetInvalidated();
+//            }
+        }
     }
 }

@@ -11,11 +11,17 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 
 import com.google.gson.Gson;
@@ -54,6 +60,10 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
     private ArrayList<ShopModel> dataList = new ArrayList<>();
     private int currentPageIndex = 0;
     private boolean refreshOrMore = false;
+    // 搜索框
+    ImageButton clearSearch;
+    EditText query;
+    private InputMethodManager inputMethodManager;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -74,17 +84,53 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
             StrictMode.setThreadPolicy(policy);
         }
         mListView = (RefreshListView) mActivity.findViewById(R.id.rlv);
-
-
+        inputMethodManager = (InputMethodManager)mActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        clearSearch = (ImageButton)mActivity.findViewById(R.id.search_clear);
+        query = (EditText)mActivity.findViewById(R.id.query);
+        query.setHint("请输入商户名称");
         mAdapter = new MainFragmentAdapter(mActivity, dataList);
         mListView.setAdapter(mAdapter);
 
         mListView.setOnRefreshListener(this);
+        setListener();
         getAccountRecord();
+
     }
 
+    public void setListener(){
+        query.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mAdapter.getFilter().filter(s);
+                if (s.length() > 0) {
+                    clearSearch.setVisibility(View.VISIBLE);
+                } else {
+                    clearSearch.setVisibility(View.INVISIBLE);
 
+                }
+            }
 
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        clearSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                query.getText().clear();
+                hideSoftKeyboard();
+            }
+        });
+    }
+
+    void hideSoftKeyboard() {
+        if (mActivity.getWindow().getAttributes().softInputMode != WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN) {
+            if (mActivity.getCurrentFocus() != null)
+                inputMethodManager.hideSoftInputFromWindow(mActivity.getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
     @Override
     public void loginSuc(String requestMethod, TryLogin tryLogin) {
 

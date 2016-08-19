@@ -82,6 +82,11 @@ public class UserRecordActivity extends ParentActivity implements LoginBack ,OnR
     @Override
     public void loginSuc(String requestMethod, TryLogin tryLogin) {
 
+        if(refreshOrMore)
+            user_record_listView.hideHeaderView();
+        else
+            user_record_listView.hideFooterView();
+
         if(tryLogin != null){
             if(tryLogin.getValue() == 1){
                 /*流水账单获取成功*/
@@ -110,26 +115,14 @@ public class UserRecordActivity extends ParentActivity implements LoginBack ,OnR
                     userRecordAdapter.setDatas(datas);
                     userRecordAdapter.notifyDataSetChanged();
 
-                    if(refreshOrMore)
-                        user_record_listView.hideHeaderView();
-                    else
-                        user_record_listView.hideFooterView();
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
-
-
             }else{
 
                 String errorMsg = tryLogin.getMemo();
                 ToastUtil.showInfo(this,"流水账单获取失败:"+errorMsg);
             }
-
-
         }
 
     }

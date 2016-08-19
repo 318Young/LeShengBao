@@ -33,11 +33,6 @@ public abstract class ParentActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
-        if(!YoungApplication.loginStatic) {
-            ToastUtil.showInfo(this, "请先登录账号");
-            return ;
-        }
         initViews();
         initDates();
 

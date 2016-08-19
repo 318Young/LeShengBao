@@ -123,13 +123,22 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
                             case R.id.nav_recharge:/*充值*/
                                 break;
                             case R.id.nav_transfer:/*转账*/
-                                startActivity(new Intent(MainActivity.this, TransferMoneyActivity.class));
+                                if (SharedPreferencesUtils.getBooleanValue(MainActivity.this, PreConstants.LSB_ISLOGIN, false)){
+                                    startActivity(new Intent(MainActivity.this, TransferMoneyActivity.class));
+                                } else {
+                                    Toast.makeText(MainActivity.this,"please login", Toast.LENGTH_SHORT).show();
+                                }
+
                                 break;
                             case R.id.nav_record:/*记录*/
 //                                startActivity(new Intent(MainActivity.this, UserRecordActivity.class));
                                 break;
                             case R.id.sub_setting:/*安全设置*/
-                                startActivity(new Intent(MainActivity.this, SafeSettingActivity.class));
+                                if (SharedPreferencesUtils.getBooleanValue(MainActivity.this, PreConstants.LSB_ISLOGIN, false)){
+                                    startActivity(new Intent(MainActivity.this, SafeSettingActivity.class));
+                                } else {
+                                    Toast.makeText(MainActivity.this,"please login", Toast.LENGTH_SHORT).show();
+                                }
                                 break;
                         }
                         menuItem.setChecked(true);

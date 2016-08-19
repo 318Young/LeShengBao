@@ -59,11 +59,25 @@ public class CommonAsync extends AsyncTask<Map<String, Object>, Integer, TryLogi
     }
 
     private CustomProgressDialog customProgressDialog = null ;
+
+    private boolean progressFlag = true ;
+
+    public boolean isProgressFlag() {
+        return progressFlag;
+    }
+
+    public void setProgressFlag(boolean progressFlag) {
+        this.progressFlag = progressFlag;
+    }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        customProgressDialog = new CustomProgressDialog(contxt ,  message ,R.anim.frame);
-        customProgressDialog.show();
+        if(progressFlag){
+            customProgressDialog = new CustomProgressDialog(contxt ,  message ,R.anim.frame);
+            customProgressDialog.show();
+        }
+
     }
 
     @Override

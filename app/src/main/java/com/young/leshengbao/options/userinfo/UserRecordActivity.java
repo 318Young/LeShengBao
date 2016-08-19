@@ -74,7 +74,7 @@ public class UserRecordActivity extends ParentActivity implements LoginBack ,OnR
     @Override
     public void initDates() {
 
-        getUserRecord(currentPageIndex);
+        getUserRecord(currentPageIndex,true);
 
         user_record_listView.setOnRefreshListener(this);
     }
@@ -134,13 +134,13 @@ public class UserRecordActivity extends ParentActivity implements LoginBack ,OnR
 
     }
 
-    public void getUserRecord(int currentPageIndex){
+    public void getUserRecord(int currentPageIndex ,boolean flag){
         try {
             ansyFactory = new ConcreFactory();
             loginAsync = ansyFactory.createAnsyProduct(CommonAsync.class);
             Map<String, Object> map = new HashMap();
             map.put("xml", CommonUtils.getXml(UserRecordActivity.this));
-            System.out.println("xml-----"+CommonUtils.getXml(UserRecordActivity.this));
+            System.out.println("xml-----" + CommonUtils.getXml(UserRecordActivity.this));
             map.put("xml", CommonUtils.getXml(UserRecordActivity.this));
             map.put("pageindex" , currentPageIndex);
             map.put("pagecount", 6);
@@ -148,6 +148,7 @@ public class UserRecordActivity extends ParentActivity implements LoginBack ,OnR
             loginAsync.setContxt(this);
             loginAsync.setUrl(getString(R.string.userInfo_url));
             loginAsync.setRequestMethod(getString(R.string.getUserRecord));
+            loginAsync.setProgressFlag(flag);
             loginAsync.execute(map, null, null);
 
         } catch (Exception e) {
@@ -160,7 +161,7 @@ public class UserRecordActivity extends ParentActivity implements LoginBack ,OnR
     public void onDownPullRefresh() {
         currentPageIndex = 0 ;
         refreshOrMore = true;
-        getUserRecord(currentPageIndex);
+        getUserRecord(currentPageIndex , false);
     }
 
     /*上拉加载*/
@@ -168,6 +169,6 @@ public class UserRecordActivity extends ParentActivity implements LoginBack ,OnR
     public void onLoadingMore() {
         currentPageIndex++;
         refreshOrMore = false ;
-        getUserRecord(currentPageIndex);
+        getUserRecord(currentPageIndex,false);
     }
 }

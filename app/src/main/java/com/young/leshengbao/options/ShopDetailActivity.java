@@ -35,6 +35,7 @@ import com.young.leshengbao.adapter.TestAdapter;
 public class ShopDetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_NAME = "shop_name";
+    public static final String EXTRA_IMAGE = "shop_image";
     private WebView mWebView;
     private WebSettings mWebSetting;
     @Override
@@ -46,6 +47,7 @@ public class ShopDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final String shopName = intent.getStringExtra(EXTRA_NAME);
+        final String shopImage = intent.getStringExtra(EXTRA_IMAGE);
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -55,7 +57,7 @@ public class ShopDetailActivity extends AppCompatActivity {
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(shopName);
 
-        loadBackdrop();
+        loadBackdrop(shopImage);
 
         mWebView = (WebView) findViewById(R.id.wv_detail);
         mWebSetting = mWebView.getSettings();
@@ -75,9 +77,9 @@ public class ShopDetailActivity extends AppCompatActivity {
 //        lv_detail.setAdapter(new TestAdapter(this));
     }
 
-    private void loadBackdrop() {
+    private void loadBackdrop(String shopImage) {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        Glide.with(this).load(R.drawable.p10).centerCrop().into(imageView);
+        Glide.with(this).load(shopImage).centerCrop().into(imageView);
     }
 
     @Override

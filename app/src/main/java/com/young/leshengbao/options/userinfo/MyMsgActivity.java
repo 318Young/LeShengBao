@@ -61,7 +61,6 @@ public class MyMsgActivity extends ParentActivity implements LoginBack {
 
     @Override
     public void initDates() {
-        toolbar.setTitle("我的消息");
         initMsgs();
     }
 

@@ -1,9 +1,17 @@
 <resources>
-    <string name="app_name">LeShengBao</string>
+    <string name="app_name">乐升宝</string>
+    <string name="app_copyright">青春无限Yong团队\n版权所有\nCopyright © 2016&#8211;2017 Yong\nAll Rights Reserved</string>
     <string name="name_space">http://tempuri.org/</string>
     <string name="login_url">http://123.207.137.67/Ws/Login.asmx</string>
     <string name="userInfo_url">http://123.207.137.67/Ws/UserInfo.asmx</string>
     <string name="user_url">http://123.207.137.67/Ws/User.asmx</string>
+
+    <!-- slide menu -->
+    <string name="title_activity_transfer_money">转账</string>
+    <string name="title_activity_charg_money">充值</string>
+    <string name="title_activity_safe_setting">安全码设置</string>
+    <string name="title_activity_about">关于</string>
+    <string name="title_activity_my_msg">我的消息</string>
 
     <!--Request method -->
     <string name="get_yzm_method">SendYzm</string>
@@ -45,7 +53,7 @@
     <string name="transfer_money_other_num">对方账号</string>
     <string name="transfer_money_charge">转账金额</string>
     <string name="transfer_money_confirm">确定转账</string>
-    <string name="title_activity_safe_setting">安全码设置</string>
+
 
     <string name = "use_safe_password">启用安全码</string>
     <string name = "change_safe_password">修改安全码</string>

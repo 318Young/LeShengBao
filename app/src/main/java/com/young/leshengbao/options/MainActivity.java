@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.young.leshengbao.R;
 import com.young.leshengbao.adapter.MainPagerAdapter;
 import com.young.leshengbao.fragments.MainFragment;
+import com.young.leshengbao.options.about.AboutActivity;
 import com.young.leshengbao.options.login.LoginActivity;
 import com.young.leshengbao.options.money.TransferMoneyActivity;
 import com.young.leshengbao.options.setting.SafeSettingActivity;
@@ -131,7 +132,11 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
 
                                 break;
                             case R.id.nav_record:/*记录*/
-//                                startActivity(new Intent(MainActivity.this, UserRecordActivity.class));
+                                if (SharedPreferencesUtils.getBooleanValue(MainActivity.this, PreConstants.LSB_ISLOGIN, false)){
+                                    startActivity(new Intent(MainActivity.this, UserRecordActivity.class));
+                                } else {
+                                    Toast.makeText(MainActivity.this,"please login", Toast.LENGTH_SHORT).show();
+                                }
                                 break;
                             case R.id.sub_setting:/*安全设置*/
                                 if (SharedPreferencesUtils.getBooleanValue(MainActivity.this, PreConstants.LSB_ISLOGIN, false)){
@@ -139,6 +144,9 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
                                 } else {
                                     Toast.makeText(MainActivity.this,"please login", Toast.LENGTH_SHORT).show();
                                 }
+                                break;
+                            case R.id.sub_about:/*关于*/
+                                startActivity(new Intent(MainActivity.this, AboutActivity.class));
                                 break;
                         }
                         menuItem.setChecked(true);

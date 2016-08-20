@@ -1,6 +1,8 @@
 package com.young.leshengbao.utils;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.util.Base64;
 import android.util.Log;
 
@@ -22,7 +24,9 @@ import java.util.regex.Pattern;
  * Created by admin on 2016/7/26.
  */
 public class CommonUtils {
-
+    public static final String VERSIONCODE = "versionCode";
+    public static final String VERSIONNAME = "versionName";
+    public static final String PACKAGENAME = "packageName";
 
     public static boolean matchPhoneNum(String phoneNum) {
 
@@ -67,5 +71,28 @@ public class CommonUtils {
                 md5StrBuff.append(Integer.toHexString(0xFF & bytes[i]));
         }
         return md5StrBuff.toString();
+    }
+
+
+    /**
+     *
+     * @param context
+     * @return
+     */
+    public static Map<String, Object> getAppInfo(Context context) {
+        Map<String, Object> map = null;
+        PackageManager manager = null;
+        PackageInfo info = null;
+        try {
+            map = new HashMap<>();
+            manager = context.getPackageManager();
+            info = manager.getPackageInfo(context.getPackageName(), 0);
+            map.put(VERSIONCODE, info.versionCode);
+            map.put(VERSIONNAME, info.versionName);
+            map.put(PACKAGENAME, info.packageName);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return map;
     }
 }

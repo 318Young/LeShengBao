@@ -48,8 +48,6 @@ public class TransferMoneyActivity extends ParentActivity implements View.OnClic
 
     @Override
     public void initViews() {
-        toolbar.setTitle("转账");
-
         otherNum = (EditText) findViewById(R.id.et_other_num);
         charge = (EditText) findViewById(R.id.et_charge);
 

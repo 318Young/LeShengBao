@@ -23,17 +23,20 @@
         <activity android:name=".options.login.RegisterActivity" />
         <activity android:name=".options.ShopDetailActivity" />
         <activity android:name=".options.userinfo.UserInfoActivity" />
-        <activity android:name=".options.userinfo.MyMsgActivity" />
-        <activity android:name=".options.money.TransferMoneyActivity" />
+        <activity android:name=".options.userinfo.MyMsgActivity"
+            android:label="@string/title_activity_my_msg"/>
+        <activity android:name=".options.money.TransferMoneyActivity"
+            android:label="@string/title_activity_transfer_money"/>
         <activity
             android:name=".options.money.InputSafeNumActivity"
             android:theme="@style/transfer_money_input_safe_num_style" />
         <activity
             android:name=".options.userinfo.UserRecordActivity"
-            android:label="@string/title_activity_user_record"
-            android:theme="@style/AppTheme" />
+            android:label="@string/title_activity_user_record" />
         <activity android:name=".options.setting.SafeSettingActivity"
             android:label="@string/title_activity_safe_setting" ></activity>
+        <activity android:name=".options.about.AboutActivity"
+            android:label="@string/title_activity_about"></activity>
     </application>
 
 </manifest>

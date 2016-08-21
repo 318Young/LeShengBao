@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.young.leshengbao.R;
@@ -25,6 +26,8 @@ import java.util.Map;
 public class SafeSettingActivity extends ParentActivity implements View.OnClickListener, LoginBack {
 
     private EditText  et_yzm ,et_safe_num , et_again_new_safe_password , et_old_safe_num;
+
+    private LinearLayout lyOldSafeNum;
 
     private Button  bt_confirm;
 
@@ -67,14 +70,16 @@ public class SafeSettingActivity extends ParentActivity implements View.OnClickL
 
         image_yzm = (ImageView) findViewById(R.id.image_get_yzm);
 
+        lyOldSafeNum = (LinearLayout) findViewById(R.id.ly_old_safe_num);
+
         et_old_safe_num = (EditText)findViewById(R.id.et_old_safe_num);
 
         intent = getIntent();
         flag =  intent.getStringExtra("flag");
         if(TextUtils.isEmpty(flag) || "setting".equals(flag))
-            et_old_safe_num.setVisibility(View.GONE);
+            lyOldSafeNum.setVisibility(View.GONE);
         else if(!TextUtils.isEmpty(flag) && "update".equals(flag))
-            et_old_safe_num.setVisibility(View.VISIBLE);
+            lyOldSafeNum.setVisibility(View.VISIBLE);
     }
 
     public void setListenser(){

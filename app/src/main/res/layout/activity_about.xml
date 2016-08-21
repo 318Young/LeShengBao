@@ -18,14 +18,14 @@
             android:id="@+id/about_ic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_big"
-            android:src="@drawable/ic_logo" />
+            android:layout_margin="@dimen/margin_large"
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/about_app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_big"
+            android:layout_margin="@dimen/margin_large"
             android:text="@string/app_name"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_normal" />
@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/margin_big"
+        android:layout_margin="@dimen/margin_large"
         android:gravity="center"
         android:lineSpacingExtra="@dimen/margin_normal"
         android:text="@string/app_copyright"

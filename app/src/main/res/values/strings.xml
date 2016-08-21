@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">乐升宝</string>
-    <string name="app_copyright">青春无限Yong团队\n版权所有\nCopyright © 2016&#8211;2017 Yong\nAll Rights Reserved</string>
+    <string name="app_copyright">青春无限Young团队\n版权所有\nCopyright © 2016&#8211;2017 Young\nAll Rights Reserved</string>
     <string name="name_space">http://tempuri.org/</string>
     <string name="login_url">http://123.207.137.67/Ws/Login.asmx</string>
     <string name="userInfo_url">http://123.207.137.67/Ws/UserInfo.asmx</string>
@@ -12,6 +12,8 @@
     <string name="title_activity_safe_setting">安全码设置</string>
     <string name="title_activity_about">关于</string>
     <string name="title_activity_my_msg">我的消息</string>
+    <string name="title_activity_login">登录</string>
+    <string name="title_activity_register">注册</string>
 
     <!--Request method -->
     <string name="get_yzm_method">SendYzm</string>
@@ -29,6 +31,9 @@
 
     <!--login and register-->
     <string name="input_wrong_phone_num">请输入正确的手机号</string>
+
+    <string name="tv_username">用户名</string>
+    <string name="tv_psw">密码</string>
     <string name="bt_login">立即登录</string>
     <string name="bt_register">立即注册</string>
     <string name="et_hint_username">手机号</string>
@@ -38,7 +43,7 @@
     <string name="about_phone_number">关联手机号</string>
     <string name="et_hint_pdw">密码</string>
     <string name="et_hint_yzm">手机验证码</string>
-    <string name="bt_get_yzm">获取手机验证码</string>
+    <string name="bt_get_yzm">获取验证码</string>
     <string name="register_no_username">请输入用户名</string>
     <string name="et_pdw_less">密码至少为6位数</string>
     <string name="et_hint_confirm_pdw">再次输入密码</string>

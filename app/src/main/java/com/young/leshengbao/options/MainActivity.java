@@ -41,7 +41,6 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
     private CircleImageView iv_header;
     private TextView tv_name;
     public static final int LOGIN_REQUEST_CODE = 0;
-    private boolean isLogin = false;
 
 
     @Override
@@ -76,14 +75,22 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
 
             iv_header.setOnClickListener(this);
 
-            if (SharedPreferencesUtils.getBooleanValue(this, PreConstants.LSB_ISLOGIN, false)){
-                tv_name.setText(SharedPreferencesUtils.getStringValue(this, PreConstants.LSB_USERPHONE, ""));
-            } else {
-                tv_name.setText("请登录");
-            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (SharedPreferencesUtils.getBooleanValue(this, PreConstants.LSB_ISLOGIN, false)){
+            tv_name.setText(SharedPreferencesUtils.getStringValue(this, PreConstants.LSB_USERPHONE, ""));
+            iv_header.setImageResource(R.drawable.user_logo);
+        } else {
+            iv_header.setImageResource(R.drawable.login_logo);
+            tv_name.setText("请登录");
         }
     }
 
@@ -162,8 +169,7 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
         if (requestCode == 0){
             if (resultCode == 0){
                 if (null != data){
-                    isLogin = true;
-                    tv_name.setText(data.getStringExtra("userName"));
+                    startActivity(new Intent(MainActivity.this, UserInfoActivity.class));
                 }
             }
         }
@@ -173,10 +179,11 @@ public class  MainActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.iv_user_header:
-                if (false == isLogin){
-
+                if (!SharedPreferencesUtils.getBooleanValue(MainActivity.this, PreConstants.LSB_ISLOGIN, false)){
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivityForResult(intent, LOGIN_REQUEST_CODE);
+                } else {
+//                    Toast.makeText(MainActivity.this,"allread login", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

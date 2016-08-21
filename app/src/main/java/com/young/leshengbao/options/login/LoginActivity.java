@@ -55,6 +55,7 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
         etPassword = (EditText) findViewById(R.id.et_password);
         findViewById(R.id.bt_login).setOnClickListener(this);
         findViewById(R.id.bt_register).setOnClickListener(this);
+        findViewById(R.id.tv_register).setOnClickListener(this);
 
         toolbar.setTitle(getString(R.string.bt_login));
 
@@ -86,6 +87,7 @@ public class LoginActivity extends ParentActivity implements View.OnClickListene
 
                 break;
             case R.id.bt_register:
+            case R.id.tv_register:
                 startActivityForResult(new Intent(this, RegisterActivity.class),REGISTER_RESULT_CODE);
                 break;
             default:

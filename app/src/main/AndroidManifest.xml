@@ -19,8 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".options.login.LoginActivity" />
-        <activity android:name=".options.login.RegisterActivity" />
+        <activity android:name=".options.login.LoginActivity"
+            android:label="@string/title_activity_login"/>
+        <activity android:name=".options.login.RegisterActivity"
+            android:label="@string/title_activity_register"/>
         <activity android:name=".options.ShopDetailActivity" />
         <activity android:name=".options.userinfo.UserInfoActivity" />
         <activity android:name=".options.userinfo.MyMsgActivity"

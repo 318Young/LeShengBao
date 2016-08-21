@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/app_background_color"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -18,132 +18,276 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
 
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="20dp"-->
+        <!--android:background="@drawable/round_login_layout"-->
+        <!--android:focusable="true"-->
+        <!--android:focusableInTouchMode="true"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:orientation="vertical">-->
+        <!--<EditText-->
+            <!--android:id="@+id/et_old_safe_num"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@null"-->
+            <!--android:drawableLeft="@drawable/icon_psw"-->
+            <!--android:drawablePadding="4dp"-->
+            <!--android:hint="@string/et_old_safepassword"-->
+            <!--android:inputType="number"-->
+
+            <!--android:padding="4dp"-->
+            <!--android:singleLine="true"-->
+            <!--android:textColorHint="@color/bg_gray"-->
+            <!--android:textSize="14sp" />-->
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@color/bg_gray" />-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/et_safe_num"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@null"-->
+            <!--android:drawableLeft="@drawable/icon_psw"-->
+            <!--android:drawablePadding="4dp"-->
+            <!--android:hint="@string/et_new_safepassword"-->
+            <!--android:inputType="number"-->
+
+            <!--android:padding="4dp"-->
+            <!--android:singleLine="true"-->
+            <!--android:textColorHint="@color/bg_gray"-->
+            <!--android:textSize="14sp" />-->
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@color/bg_gray" />-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/et_again_new_safe_password"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@null"-->
+            <!--android:drawableLeft="@drawable/icon_psw"-->
+            <!--android:drawablePadding="4dp"-->
+            <!--android:hint="@string/et_again_new_safepassword"-->
+            <!--android:inputType="number"-->
+            <!--android:padding="4dp"-->
+            <!--android:singleLine="true"-->
+            <!--android:textColorHint="@color/bg_gray"-->
+            <!--android:textSize="14sp" />-->
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@color/bg_gray" />-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/et_yzm"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@null"-->
+                <!--android:drawableLeft="@drawable/icon_psw"-->
+                <!--android:drawablePadding="4dp"-->
+                <!--android:hint="请输入验证码"-->
+                <!--android:padding="4dp"-->
+                <!--android:singleLine="true"-->
+                <!--android:textColorHint="@color/bg_gray"-->
+                <!--android:textSize="14sp" />-->
+
+
+        <!--</LinearLayout>-->
+
+    <!--</LinearLayout>-->
+
+
     <LinearLayout
+        android:id="@+id/ly_old_safe_num"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="@drawable/round_login_layout"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
+        android:background="@color/white"
+        android:padding="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_large"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="旧安全码"/>
         <EditText
             android:id="@+id/et_old_safe_num"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:layout_marginLeft="@dimen/margin_xlarge"
+            android:layout_marginRight="@dimen/margin_xlarge"
+            android:layout_marginTop="@dimen/margin_large"
             android:background="@null"
-            android:drawableLeft="@drawable/icon_psw"
-            android:drawablePadding="4dp"
             android:hint="@string/et_old_safepassword"
-            android:inputType="number"
-
-            android:padding="4dp"
+            android:padding="@dimen/margin_normal"
             android:singleLine="true"
+            android:inputType="number"
             android:textColorHint="@color/bg_gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/font_size_small" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/bg_gray" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新安全码"/>
 
         <EditText
             android:id="@+id/et_safe_num"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:layout_marginLeft="@dimen/margin_xlarge"
+            android:layout_marginRight="@dimen/margin_xlarge"
+            android:layout_marginTop="@dimen/margin_large"
             android:background="@null"
-            android:drawableLeft="@drawable/icon_psw"
-            android:drawablePadding="4dp"
             android:hint="@string/et_new_safepassword"
             android:inputType="number"
-
-            android:padding="4dp"
+            android:padding="@dimen/margin_normal"
             android:singleLine="true"
             android:textColorHint="@color/bg_gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/font_size_small" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/bg_gray" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确认安全码"/>
         <EditText
             android:id="@+id/et_again_new_safe_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:layout_marginLeft="@dimen/margin_xlarge"
+            android:layout_marginRight="@dimen/margin_xlarge"
+            android:layout_marginTop="@dimen/margin_large"
             android:background="@null"
-            android:drawableLeft="@drawable/icon_psw"
-            android:drawablePadding="4dp"
             android:hint="@string/et_again_new_safepassword"
             android:inputType="number"
-            android:padding="4dp"
+            android:padding="@dimen/margin_normal"
             android:singleLine="true"
             android:textColorHint="@color/bg_gray"
-            android:textSize="14sp" />
+            android:textSize="@dimen/font_size_small" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/bg_gray" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/et_yzm"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@null"
-                android:drawableLeft="@drawable/icon_psw"
-                android:drawablePadding="4dp"
-                android:hint="请输入验证码"
-                android:padding="4dp"
-                android:singleLine="true"
-                android:textColorHint="@color/bg_gray"
-                android:textSize="14sp" />
-
-
-        </LinearLayout>
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/image_get_yzm"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="看不清，换一张"
-        android:textSize="@dimen/small_textSize"
-        android:textColor="@color/black"
-        android:layout_margin="@dimen/pad"
-        android:id="@+id/next_page"/>
+        android:padding="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="验证码"/>
+
+        <EditText
+            android:id="@+id/et_yzm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:layout_marginLeft="@dimen/margin_xlarge"
+            android:layout_marginRight="@dimen/margin_xlarge"
+            android:layout_marginTop="@dimen/margin_large"
+            android:background="@null"
+            android:hint="请输入验证码"
+            android:padding="@dimen/margin_normal"
+            android:singleLine="true"
+            android:textColorHint="@color/bg_gray"
+            android:textSize="@dimen/font_size_small" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/image_get_yzm"
+                android:layout_width="100dp"
+                android:layout_height="60dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="看不清，换一张"
+                android:textSize="@dimen/font_size_small"
+                android:textColor="@color/black"
+                android:layout_margin="@dimen/margin_normal"
+                android:id="@+id/next_page"/>
+        </LinearLayout>
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/bt_confirm"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_selector"
+        android:layout_margin="@dimen/margin_large"
         android:text="@string/confirm" />
 
 </LinearLayout>

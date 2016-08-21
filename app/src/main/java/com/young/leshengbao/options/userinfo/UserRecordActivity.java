@@ -96,7 +96,7 @@ public class UserRecordActivity extends ParentActivity implements LoginBack ,OnR
                 System.out.println("json："+json.substring(1, json.length() - 1));
                 try {
 
-                    JSONArray jsonArray = (JSONArray)new JSONArray(json);
+                    JSONArray jsonArray = new JSONArray(json);
 
                     Gson gson = new Gson();
 
@@ -136,7 +136,7 @@ public class UserRecordActivity extends ParentActivity implements LoginBack ,OnR
             System.out.println("xml-----" + CommonUtils.getXml(UserRecordActivity.this));
             map.put("xml", CommonUtils.getXml(UserRecordActivity.this));
             map.put("pageindex" , currentPageIndex);
-            map.put("pagecount", 6);
+            map.put("pagecount", 10);
             loginAsync.setLoginBack(this);
             loginAsync.setContxt(this);
             loginAsync.setUrl(getString(R.string.userInfo_url));

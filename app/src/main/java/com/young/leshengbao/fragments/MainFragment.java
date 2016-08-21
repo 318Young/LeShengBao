@@ -60,6 +60,7 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
     private ArrayList<ShopModel> dataList = new ArrayList<>();
     private int currentPageIndex = 0;
     private boolean refreshOrMore = false;
+    private boolean isRequesting = false;/*这个下拉刷新有问题，会出现判断不准确，下拉和上拉同时发生，暂时用这个区分*/
     // 搜索框
     ImageButton clearSearch;
     EditText query;
@@ -134,6 +135,12 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
     @Override
     public void loginSuc(String requestMethod, TryLogin tryLogin) {
 
+        isRequesting = false;
+        if(refreshOrMore)
+            mListView.hideHeaderView();
+        else
+            mListView.hideFooterView();
+
         if(tryLogin != null){
             if(tryLogin.getValue() == 1){
                 /*获取成功*/
@@ -142,9 +149,13 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
                 Log.e("json", json.substring(1, json.length() - 1));
                 try {
 
-                    JSONArray jsonArray = (JSONArray)new JSONArray(json);
+                    JSONArray jsonArray = new JSONArray(json);
 
                     Gson gson = new Gson();
+
+                    if(refreshOrMore)
+                        dataList.clear();
+
                     ArrayList<ShopModel> tempList = new ArrayList<>();
                     for(int i = 0 ; i< jsonArray.length() ; i++){
                         JSONObject jsonObject = (JSONObject)jsonArray.get(i);
@@ -157,16 +168,10 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
                         return ;
                     }
                     mAdapter.notifyDataSetChanged();
-                    if(refreshOrMore)
-                        mListView.hideHeaderView();
-                    else
-                        mListView.hideFooterView();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
-
 
             }else{
 
@@ -194,6 +199,7 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
             loginAsync.setUrl(getString(R.string.userInfo_url));
             loginAsync.setRequestMethod(getString(R.string.getAccountRecord));
             loginAsync.execute(map, null, null);
+            isRequesting = true;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -205,14 +211,16 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
     public void onDownPullRefresh() {
         currentPageIndex = 0 ;
         refreshOrMore = true;
-        dataList.clear();
         getAccountRecord();
     }
 
     @Override
     public void onLoadingMore() {
-        currentPageIndex++;
-        refreshOrMore = false ;
-        getAccountRecord();
+        if (!isRequesting){
+            currentPageIndex++;
+            refreshOrMore = false ;
+            getAccountRecord();
+        }
+
     }
 }

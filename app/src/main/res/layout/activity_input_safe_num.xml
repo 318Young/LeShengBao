@@ -57,7 +57,7 @@
                     android:id="@+id/tv_transfer_charge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_big"
+                    android:layout_margin="@dimen/margin_large"
                     android:text="@string/transfer_money_other_num"
                     android:textColor="@color/money_color"
                     android:textSize="@dimen/font_size_normal" />
@@ -77,7 +77,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_big"
+                    android:layout_margin="@dimen/margin_large"
                     android:text="请输入安全码"
                     android:textColor="@color/gray_dark"
                     android:textSize="@dimen/font_size_small" />
@@ -85,7 +85,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_big"
+                    android:layout_margin="@dimen/margin_large"
                     android:text="忘记密码"
                     android:textColor="@color/app_theme_color"
                     android:textSize="@dimen/font_size_small" />
@@ -97,7 +97,7 @@
                     android:id="@+id/ll_keyboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_big"
+                    android:layout_margin="@dimen/margin_large"
                     android:clickable="true"
                     android:background="@drawable/round_login_layout"
                     android:orientation="horizontal">

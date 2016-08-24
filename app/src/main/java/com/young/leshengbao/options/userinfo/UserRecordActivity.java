@@ -154,7 +154,7 @@ public class UserRecordActivity extends ParentActivity implements LoginBack ,OnR
     public void onDownPullRefresh() {
         currentPageIndex = 0 ;
         refreshOrMore = true;
-        getUserRecord(currentPageIndex , false);
+        getUserRecord(currentPageIndex , true);
     }
 
     /*上拉加载*/
@@ -162,6 +162,6 @@ public class UserRecordActivity extends ParentActivity implements LoginBack ,OnR
     public void onLoadingMore() {
         currentPageIndex++;
         refreshOrMore = false ;
-        getUserRecord(currentPageIndex,false);
+        getUserRecord(currentPageIndex,true);
     }
 }

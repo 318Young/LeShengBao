@@ -3,14 +3,9 @@ package com.young.leshengbao.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
@@ -22,6 +17,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 
 import com.google.gson.Gson;
@@ -44,7 +40,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -91,7 +86,7 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
         query.setHint("请输入商户名称");
         mAdapter = new MainFragmentAdapter(mActivity, dataList);
         mListView.setAdapter(mAdapter);
-
+//        ToolUtils.setListViewHeightBasedOnChildren(mListView);
         mListView.setOnRefreshListener(this);
         setListener();
         getAccountRecord("",true);
@@ -173,7 +168,6 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
                         return ;
                     }
                     mAdapter.notifyDataSetChanged();
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -198,7 +192,7 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
             System.out.println("xml-----" + CommonUtils.getXml(mActivity));
             map.put("xml", CommonUtils.getXml(mActivity));
             map.put("pageindex" , currentPageIndex);
-            map.put("pagecount", 3);
+            map.put("pagecount", 10);
             map.put("name", name);
             loginAsync.setLoginBack(this);
             loginAsync.setContxt(mActivity);
@@ -218,7 +212,7 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
     public void onDownPullRefresh() {
         currentPageIndex = 0 ;
         refreshOrMore = true;
-        getAccountRecord("",false);
+        getAccountRecord("",true);
     }
 
     @Override
@@ -226,7 +220,7 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
         if (!isRequesting){
             currentPageIndex++;
             refreshOrMore = false ;
-            getAccountRecord("",false);
+            getAccountRecord("",true);
         }
 
     }

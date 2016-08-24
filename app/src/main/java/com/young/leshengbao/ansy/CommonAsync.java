@@ -74,7 +74,7 @@ public class CommonAsync extends AsyncTask<Map<String, Object>, Integer, TryLogi
     protected void onPreExecute() {
         super.onPreExecute();
         if(progressFlag){
-            customProgressDialog = new CustomProgressDialog(contxt ,  message ,R.anim.frame);
+            customProgressDialog = new CustomProgressDialog(contxt ,  "" ,R.anim.frame);
             customProgressDialog.show();
         }
 

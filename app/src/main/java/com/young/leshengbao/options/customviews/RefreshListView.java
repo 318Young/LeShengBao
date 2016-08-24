@@ -1,12 +1,13 @@
 package com.young.leshengbao.options.customviews;
 
 import java.text.SimpleDateFormat;
-
+import java.util.zip.Inflater;
 
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -58,11 +59,12 @@ public class RefreshListView extends ListView implements OnScrollListener {
      * 初始化脚布局
      */
     private void initFooterView() {
-        footerView = View.inflate(getContext(), R.layout.listview_footer, null);
+        footerView = LayoutInflater.from(getContext()).inflate(R.layout.listview_footer, null);
+//        footerView = View.inflate(getContext(), R.layout.listview_footer, null);
         footerView.measure(0, 0);
         footerViewHeight = footerView.getMeasuredHeight();
         footerView.setPadding(0, -footerViewHeight, 0, 0);
-        this.addFooterView(footerView);
+//        this.addFooterView(footerView);
     }
 
     /**
@@ -141,6 +143,7 @@ public class RefreshListView extends ListView implements OnScrollListener {
                 if (currentState == RELEASE_REFRESH) {
                     Log.i(TAG, "刷新数据.");
                     // 把头布局设置为完全显示状态
+//                    headerView.setPadding(0, headerViewHeight, 0, 0);
                     headerView.setPadding(0, 0, 0, 0);
                     // 进入到正在刷新中状态
                     currentState = REFRESHING;
@@ -176,8 +179,9 @@ public class RefreshListView extends ListView implements OnScrollListener {
             case REFRESHING: // 正在刷新中状态
                 ivArrow.clearAnimation();
                 ivArrow.setVisibility(View.GONE);
-                mProgressBar.setVisibility(View.VISIBLE);
-                tvState.setText("正在刷新中...");
+                tvState.setVisibility(View.GONE);
+//                mProgressBar.setVisibility(View.VISIBLE);
+//                tvState.setText("正在刷新中...");
                 break;
             default:
                 break;
@@ -197,6 +201,8 @@ public class RefreshListView extends ListView implements OnScrollListener {
                 // 当前到底部
                 Log.i(TAG, "加载更多数据");
                 footerView.setPadding(0, 0, 0, 0);
+                setSelection(ListView.FOCUS_DOWN);
+
                 this.setSelection(this.getCount());
 
                 if (mOnRefershListener != null) {
@@ -242,6 +248,7 @@ public class RefreshListView extends ListView implements OnScrollListener {
     public void hideHeaderView() {
         headerView.setPadding(0, -headerViewHeight, 0, 0);
         ivArrow.setVisibility(View.VISIBLE);
+        tvState.setVisibility(View.VISIBLE);
         mProgressBar.setVisibility(View.GONE);
         tvState.setText("下拉刷新");
         tvLastUpdateTime.setText("最后刷新时间: " + getLastUpdateTime());

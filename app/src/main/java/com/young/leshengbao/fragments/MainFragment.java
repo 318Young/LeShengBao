@@ -94,26 +94,31 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
 
         mListView.setOnRefreshListener(this);
         setListener();
-        getAccountRecord();
+        getAccountRecord("",true);
 
     }
 
     public void setListener(){
         query.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mAdapter.getFilter().filter(s);
-                if (s.length() > 0) {
-                    clearSearch.setVisibility(View.VISIBLE);
-                } else {
-                    clearSearch.setVisibility(View.INVISIBLE);
+//                mAdapter.getFilter().filter(s);
 
-                }
             }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
             public void afterTextChanged(Editable s) {
+
+                System.out.println("商户名称:"+s.toString());
+                refreshOrMore = true ;
+                getAccountRecord(s.toString(),true);
+                if (s.length() > 0) {
+                    clearSearch.setVisibility(View.VISIBLE);
+                } else {
+                    clearSearch.setVisibility(View.INVISIBLE);
+
+                }
             }
         });
         clearSearch.setOnClickListener(new View.OnClickListener() {
@@ -184,20 +189,22 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
     }
 
 
-    public void getAccountRecord(){
+    public void getAccountRecord(String name ,boolean flag){
         try {
             ansyFactory = new ConcreFactory();
             loginAsync = ansyFactory.createAnsyProduct(CommonAsync.class);
             Map<String, Object> map = new HashMap();
             map.put("xml", CommonUtils.getXml(mActivity));
-            System.out.println("xml-----"+CommonUtils.getXml(mActivity));
+            System.out.println("xml-----" + CommonUtils.getXml(mActivity));
             map.put("xml", CommonUtils.getXml(mActivity));
             map.put("pageindex" , currentPageIndex);
-            map.put("pagecount", 10);
+            map.put("pagecount", 3);
+            map.put("name", name);
             loginAsync.setLoginBack(this);
             loginAsync.setContxt(mActivity);
             loginAsync.setUrl(getString(R.string.userInfo_url));
             loginAsync.setRequestMethod(getString(R.string.getAccountRecord));
+            loginAsync.setProgressFlag(flag);
             loginAsync.execute(map, null, null);
             isRequesting = true;
 
@@ -211,7 +218,7 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
     public void onDownPullRefresh() {
         currentPageIndex = 0 ;
         refreshOrMore = true;
-        getAccountRecord();
+        getAccountRecord("",false);
     }
 
     @Override
@@ -219,7 +226,7 @@ public class MainFragment extends Fragment implements LoginBack, OnRefreshListen
         if (!isRequesting){
             currentPageIndex++;
             refreshOrMore = false ;
-            getAccountRecord();
+            getAccountRecord("",false);
         }
 
     }

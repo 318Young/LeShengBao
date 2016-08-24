@@ -29,8 +29,10 @@
 
     <com.young.leshengbao.options.customviews.RefreshListView
         android:id="@+id/rlv"
+        android:layout_marginBottom="?android:attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
         android:layout_below="@+id/search_bar_view"/>
 
 </RelativeLayout>

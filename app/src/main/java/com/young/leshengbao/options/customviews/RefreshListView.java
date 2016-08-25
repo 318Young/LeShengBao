@@ -201,7 +201,6 @@ public class RefreshListView extends ListView implements OnScrollListener {
                 // 当前到底部
                 Log.i(TAG, "加载更多数据");
                 footerView.setPadding(0, 0, 0, 0);
-                setSelection(ListView.FOCUS_DOWN);
 
                 this.setSelection(this.getCount());
 

@@ -2,7 +2,6 @@ package com.young.leshengbao.options.customviews;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
@@ -11,14 +10,14 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.app.Dialog;
 import com.young.leshengbao.R;
 
 /**
  * @Description:自定义对话框
- * @author http://blog.csdn.net/finddreams
+ *
  */
-public class CustomProgressDialog extends ProgressDialog {
+public class CustomProgressDialog extends Dialog {
 
     private AnimationDrawable mAnimation;
     private Context mContext;
@@ -29,13 +28,26 @@ public class CustomProgressDialog extends ProgressDialog {
     private String oldLoadingTip;
     private int mResid;
 
-    public CustomProgressDialog(Context context, String content, int id) {
+    private CustomProgressDialog customProgressDialog = null ;
+    public CustomProgressDialog(Context context){
         super(context);
         this.mContext = context;
-        this.mLoadingTip = content;
-        this.mResid = id;
+    }
+
+    public CustomProgressDialog(Context context, int theme, int anim) {
+        super(context, theme);
+        this.mContext = context;
+        this.mResid = anim;
         setCanceledOnTouchOutside(true);
     }
+
+//    public CustomProgressDialog(Context context, String content, int id) {
+//        super(context);
+//        this.mContext = context;
+//        this.mLoadingTip = content;
+//        this.mResid = id;
+//        setCanceledOnTouchOutside(true);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,4 +89,6 @@ public class CustomProgressDialog extends ProgressDialog {
 		mAnimation.start(); 
 		super.onWindowFocusChanged(hasFocus);
 	}*/
+
+
 }
